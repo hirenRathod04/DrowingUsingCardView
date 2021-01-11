@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
     tools:context=".MainActivity">
 
     <ScrollView
@@ -21,7 +20,6 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-
 
             <ImageView
                 android:layout_width="match_parent"
@@ -52,13 +50,11 @@
                 android:layout_marginTop="40dp"
                 android:layout_marginRight="20dp"
                 app:cardCornerRadius="15dp"
-
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvSingup">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
-
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
@@ -76,15 +72,13 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <ImageView
-                        android:visibility="invisible"
                         android:id="@+id/ivemove"
                         android:layout_width="25dp"
                         android:layout_height="25dp"
-
                         android:background="@drawable/ic_baseline_remove_circle_outline_24"
+                        android:visibility="invisible"
                         app:layout_constraintEnd_toEndOf="@id/civ1"
-                        app:layout_constraintTop_toTopOf="@id/civ1"
-                        />
+                        app:layout_constraintTop_toTopOf="@id/civ1" />
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/mtiFirtname"
@@ -96,20 +90,16 @@
                         android:layout_marginEnd="4dp"
                         app:layout_constraintEnd_toStartOf="@+id/mtilastname"
                         app:layout_constraintStart_toStartOf="parent"
-
                         app:layout_constraintTop_toBottomOf="@id/civ1">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:hint="First Name"
                             android:inputType="text"
-                            android:maxLines="1"
+                            android:maxLines="1" />
 
-
-
-                            android:hint="First Name" />
                     </com.google.android.material.textfield.TextInputLayout>
-
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/mtilastname"
@@ -119,7 +109,6 @@
                         android:layout_marginStart="4dp"
                         android:layout_marginTop="20dp"
                         android:layout_marginEnd="12dp"
-
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/mtiFirtname"
                         app:layout_constraintTop_toBottomOf="@id/civ1">
@@ -127,9 +116,10 @@
                         <com.google.android.material.textfield.TextInputEditText
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:hint="Last Name"
                             android:inputType="text"
-                            android:maxLines="1"
-                            android:hint="Last Name" />
+                            android:maxLines="1" />
+
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
@@ -147,9 +137,10 @@
                         <com.google.android.material.textfield.TextInputEditText
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:hint="Middle Name"
                             android:inputType="text"
-                            android:maxLines="1"
-                            android:hint="Middle Name" />
+                            android:maxLines="1" />
+
                     </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -161,18 +152,17 @@
                         android:layout_marginStart="12dp"
                         android:layout_marginTop="15dp"
                         android:layout_marginEnd="12dp"
-
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/mtiMiddlename">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:layout_width="match_parent"
-                            android:inputType="text"
                             android:layout_height="wrap_content"
                             android:drawableEnd="@drawable/ic_baseline_email_24"
                             android:drawableTint="@color/blue"
-                            android:hint="Email" />
+                            android:hint="Email"
+                            android:inputType="text" />
 
                     </com.google.android.material.textfield.TextInputLayout>
 
@@ -186,8 +176,6 @@
                         android:layout_marginEnd="12dp"
                         app:endIconDrawable="@drawable/ic_baseline_email_24"
                         app:layout_constraintEnd_toEndOf="parent"
-
-
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/mtiEmail"
                         app:startIconTint="@color/blue">
@@ -195,10 +183,11 @@
                         <com.google.android.material.textfield.TextInputEditText
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:inputType="number"
                             android:drawableEnd="@drawable/ic_baseline_call_24"
                             android:drawableTint="@color/blue"
-                            android:hint="Moblie Number" />
+                            android:hint="Moblie Number"
+                            android:inputType="number" />
+
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
@@ -216,12 +205,12 @@
                         app:passwordToggleTint="@color/blue">
 
                         <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/mtiPassword2"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:inputType="textPassword"
                             android:hint="Password"
-
-                            android:maxLines="1"/>
+                            android:inputType="textPassword"
+                            android:maxLines="1" />
 
                     </com.google.android.material.textfield.TextInputLayout>
 
@@ -242,123 +231,99 @@
                         <com.google.android.material.textfield.TextInputEditText
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:inputType="textPassword"
                             android:hint="Confirm Password"
+                            android:inputType="textPassword"
+                            android:maxLines="1" />
 
-                            android:maxLines="1"/>
                     </com.google.android.material.textfield.TextInputLayout>
-
-                   <!-- <DatePicker
-                        android:id="@+id/mtiDateofbirth"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="12dp"
-                        android:layout_marginTop="15dp"
-                        android:layout_marginEnd="12dp"
-
-
-                        android:datePickerMode="spinner"
-                        android:calendarViewShown="false"
-
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/mtiConfirmpassword"></DatePicker>-->
-
-
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/mtiDateofbirth"
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-
                         android:layout_marginStart="12dp"
                         android:layout_marginTop="15dp"
                         android:layout_marginEnd="12dp"
-
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/mtiConfirmpassword">
 
                         <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/mtiDateofbirth2"
                             android:layout_width="match_parent"
-
                             android:layout_height="wrap_content"
-
-
                             android:drawableEnd="@drawable/ic_baseline_calendar_today_24"
                             android:drawableTint="@color/blue"
-                            android:hint="Date of Birth" />
+                            android:focusableInTouchMode="false"
+                            android:hint="Date of Birth"
+                            android:inputType="none"
+                            android:onClick="go_to_openCalender" />
 
                     </com.google.android.material.textfield.TextInputLayout>
 
-
                     <TextView
                         android:id="@+id/tvGender"
-
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
+                        android:layout_marginTop="10dp"
                         android:text="Gender"
                         android:textColor="@color/blue"
                         android:textSize="13dp"
                         app:layout_constraintStart_toStartOf="@id/mtiDateofbirth"
                         app:layout_constraintTop_toBottomOf="@id/mtiDateofbirth" />
 
+                    <RadioGroup
+                        android:id="@+id/radiogroup"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="12dp"
+                        android:layout_marginTop="8dp"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        app:layout_constraintStart_toStartOf="@id/tvGender"
+                        app:layout_constraintTop_toTopOf="@id/tvGender">
 
-<RadioGroup
-    android:layout_marginTop="15dp"
-    android:id="@+id/radiogroup"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    android:layout_marginHorizontal="12dp"
+                        <RadioButton
+                            android:id="@+id/rbMale"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:layout_weight="1"
+                            android:text="Male"
+                            android:textColor="@color/black"
+                            android:textSize="13dp" />
 
-    app:layout_constraintStart_toStartOf="@id/tvGender"
-    app:layout_constraintTop_toTopOf="@id/tvGender"
-    >
-    <RadioButton
+                        <RadioButton
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="0dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_weight="1"
+                            android:text="Female"
+                            android:textColor="@color/black"
+                            android:textSize="13dp" />
 
-      android:layout_marginLeft="30dp"
-        android:gravity="center"
-        android:id="@+id/rbMale"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Male"
-        android:textSize="13dp"
-        android:textColor="@color/black"/>
-
-    <RadioButton
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginLeft="70dp"
-        android:gravity="center"
-        android:text="Female"
-        android:textColor="@color/black"
-        android:textSize="13dp" />
-
-</RadioGroup>
+                    </RadioGroup>
 
 
                     <CheckBox
-
                         android:id="@+id/tvCondition"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="30dp"
-
                         android:layout_marginRight="50dp"
+                        android:checked="false"
+                        android:onClick="checked"
                         android:text="@string/Condition"
                         android:textColor="@color/black"
                         android:textSize="13dp"
                         app:layout_constraintEnd_toEndOf="parent"
-
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/radiogroup" />
 
                     <Button
-
                         android:id="@+id/buttonlast"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -367,38 +332,36 @@
                         android:layout_marginRight="12dp"
                         android:layout_marginBottom="15dp"
                         android:background="@drawable/edit_style_corner"
-                        android:drawableTint="@color/gray"
+                        android:onClick="go_to_nextActivity"
                         android:text="@string/createaccount"
                         android:textAllCaps="false"
                         android:textSize="20dp"
-
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/tvCondition" />
 
-
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
             </androidx.cardview.widget.CardView>
 
-        <TextView
-            android:id="@+id/tvAlreadyaccount"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginBottom="30dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginTop="15dp"
+            <TextView
+                android:id="@+id/tvAlreadyaccount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="12dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="30dp"
+                android:text="@string/already_have_an_account"
+                android:textColor="@color/black"
+                android:textSize="13dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cardview" />
 
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginLeft="12dp"
-            android:text="@string/already_have_an_account"
-            android:textSize="13dp"
-            android:textColor="@color/black"
-            app:layout_constraintTop_toBottomOf="@id/cardview"
-            />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </ScrollView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

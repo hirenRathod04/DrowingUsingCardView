@@ -6,4 +6,14 @@
     android:layout_height="match_parent"
     tools:context=".CardActivity2">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:textSize="30sp"
+        android:textColor="@color/black"
+        android:text="wellcome"
+        android:gravity="center"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_height="wrap_content"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
