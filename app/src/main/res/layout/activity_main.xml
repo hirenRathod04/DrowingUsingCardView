@@ -93,6 +93,7 @@
                         app:layout_constraintTop_toBottomOf="@id/civ1">
 
                         <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/editTextfirstname"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="First Name"
@@ -114,6 +115,7 @@
                         app:layout_constraintTop_toBottomOf="@id/civ1">
 
                         <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/editTextlastname"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="Last Name"
@@ -135,6 +137,7 @@
                         app:layout_constraintTop_toBottomOf="@id/mtiFirtname">
 
                         <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/editTextmiddlename"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="Middle Name"
@@ -157,6 +160,7 @@
                         app:layout_constraintTop_toBottomOf="@id/mtiMiddlename">
 
                         <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/editTextemail"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:drawableEnd="@drawable/ic_baseline_email_24"
@@ -181,6 +185,7 @@
                         app:startIconTint="@color/blue">
 
                         <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/editTextmoblienumber"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:drawableEnd="@drawable/ic_baseline_call_24"
@@ -205,7 +210,7 @@
                         app:passwordToggleTint="@color/blue">
 
                         <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/mtiPassword2"
+                            android:id="@+id/editTextpassword"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="Password"
@@ -229,6 +234,7 @@
                         app:passwordToggleTint="@color/blue">
 
                         <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/editTextconfirmpasword"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:hint="Confirm Password"
@@ -250,20 +256,20 @@
                         app:layout_constraintTop_toBottomOf="@id/mtiConfirmpassword">
 
                         <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/mtiDateofbirth2"
+                            android:id="@+id/editTextdateofbirrth"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:drawableEnd="@drawable/ic_baseline_calendar_today_24"
                             android:drawableTint="@color/blue"
-                            android:focusableInTouchMode="false"
+                            android:focusableInTouchMode="true"
                             android:hint="Date of Birth"
                             android:inputType="none"
-                            android:onClick="go_to_openCalender" />
+                             />
 
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <TextView
-                        android:id="@+id/tvGender"
+                        android:id="@+id/textViewgender"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
@@ -274,18 +280,18 @@
                         app:layout_constraintTop_toBottomOf="@id/mtiDateofbirth" />
 
                     <RadioGroup
-                        android:id="@+id/radiogroup"
+                        android:id="@+id/radioGroup"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="12dp"
                         android:layout_marginTop="8dp"
                         android:gravity="center"
                         android:orientation="horizontal"
-                        app:layout_constraintStart_toStartOf="@id/tvGender"
-                        app:layout_constraintTop_toTopOf="@id/tvGender">
+                        app:layout_constraintStart_toStartOf="@id/textViewgender"
+                        app:layout_constraintTop_toTopOf="@id/textViewgender">
 
                         <RadioButton
-                            android:id="@+id/rbMale"
+                            android:id="@+id/radioButtonmale"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="5dp"
@@ -295,6 +301,7 @@
                             android:textSize="13dp" />
 
                         <RadioButton
+                            android:id="@+id/radioButtonfemale"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
@@ -309,7 +316,7 @@
 
 
                     <CheckBox
-                        android:id="@+id/tvCondition"
+                        android:id="@+id/checkBoxcondition"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="30dp"
@@ -321,10 +328,10 @@
                         android:textSize="13dp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/radiogroup" />
+                        app:layout_constraintTop_toBottomOf="@id/radioGroup" />
 
                     <Button
-                        android:id="@+id/buttonlast"
+                        android:id="@+id/buttoncreateaccount"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="12dp"
@@ -339,14 +346,14 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/tvCondition" />
+                        app:layout_constraintTop_toBottomOf="@id/checkBoxcondition" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
             </androidx.cardview.widget.CardView>
 
             <TextView
-                android:id="@+id/tvAlreadyaccount"
+                android:id="@+id/textViewalreadyaccount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="12dp"
@@ -359,6 +366,16 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/cardview" />
+            <Button
+
+                android:layout_marginLeft="5dp"
+                android:text="13sp"
+                android:background="@color/white"
+                android:textColor="@color/blue"
+                app:layout_constraintTop_toTopOf="@+id/textViewalreadyaccount"
+                app:layout_constraintStart_toEndOf="@+id/textViewalreadyaccount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
