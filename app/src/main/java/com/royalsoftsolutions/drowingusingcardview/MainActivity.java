@@ -144,6 +144,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
                 String Fname = editTextFirstname.getText ( ).toString ( ).trim ();
+              /*  String Fname = Fname.replaceAll("\\s+","");*/
+
+
                 String Lname = editTextLastname.getText ( ).toString ( ).trim ();
                 String Mname = editTextMiddlename.getText ( ).toString ( ).trim ();
                 String Email = editTextEmail.getText ( ).toString ( ).trim ();
@@ -169,7 +172,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 String Password = editTextPassword.getText ( ).toString ( ).trim ();
                 String ConfirmPassword = editTextConfirmPassword.getText ( ).toString ( ).trim ();
                 String DateOfbirth = editTextDateofbirth.getText ( ).toString ( ).trim ();
-                if (TextUtils.isEmpty ( fname ) )
+
+
+                if (fname.contains(" ")) {
+                   /* fname.setError("No Spaces Allowed");*/
+
+                    Toast.makeText ( MainActivity.this, "No Spaces Allowed in First Name", Toast.LENGTH_LONG ).show ( );
+                }
+               else if (TextUtils.isEmpty ( fname ) )
                 {
                    // showerror ( editTextFirstname, "Please Enter FirstName" );
                     Toast.makeText ( MainActivity.this, "please enter first name", Toast.LENGTH_LONG ).show ( );
