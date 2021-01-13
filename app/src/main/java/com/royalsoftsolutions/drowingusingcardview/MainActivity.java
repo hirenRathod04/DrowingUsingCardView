@@ -124,38 +124,101 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 String DateOfbirth = editTextDateofbirth.getText ( ).toString ( ).trim ();
                 //  String  input = EditTextinput.getText().toString();
 
+
+
                 checking ( Fname, Lname, Mname, Email, MobileNumber, Password, ConfirmPassword, DateOfbirth );
 
 
             }
 
             private void checking(String fname, String lname, String mname, String email, String mobileNumber, String password, String confirmPassword, String dateOfbirth) {
-                if (TextUtils.isEmpty ( fname ) ) {
-                    showerror ( editTextFirstname, "Please Enter FirstName" );
-                } else if ( lname.isEmpty ( ) ) {
+               /* String Email = email.getText().toString().trim();*/
+                String Email = editTextEmail.getText ( ).toString ( ).trim ();
+                String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
+                String MobileNumber = editTextMobilenumber.getText ( ).toString ( ).trim ();
 
-                    showerror ( editTextLastname, "Please Enter LastName" );
-                    /*  Toast.makeText ( MainActivity.this, "ok", Toast.LENGTH_LONG ).show ( );*/
-                } else if ( mname.isEmpty ( ) ) {
-                    showerror ( editTextMiddlename, "Please Enter MiddleName" );
-                    /*  Toast.makeText ( MainActivity.this, "ok", Toast.LENGTH_LONG ).show ( );*/
-                } else if ( email.isEmpty ( ) || ! email.contains ( "@" ) ) {
-                    if ( email.isEmpty ( ) ) {
-                        showerror ( editTextEmail, "Please Enter Email Address" );
-                    } else if ( ! email.contains ( "@" ) ) {
-                        showerror ( editTextEmail, "Please Enter Valid Email Address" );
+                String Password = editTextPassword.getText ( ).toString ( ).trim ();
+                String ConfirmPassword = editTextConfirmPassword.getText ( ).toString ( ).trim ();
+                String DateOfbirth = editTextDateofbirth.getText ( ).toString ( ).trim ();
+                if (TextUtils.isEmpty ( fname ) )
+                {
+                   // showerror ( editTextFirstname, "Please Enter FirstName" );
+                    Toast.makeText ( MainActivity.this, "please enter first name", Toast.LENGTH_LONG ).show ( );
+                } else if ( TextUtils.isEmpty ( lname ) )
+                {/*showerror ( editTextLastname, "Please Enter LastName" );*/
+                      Toast.makeText ( MainActivity.this, "Please Enter LastName", Toast.LENGTH_LONG ).show ( );
+                } else if ( TextUtils.isEmpty ( mname ))
+                {
+                    /*showerror ( editTextMiddlename, "Please Enter MiddleName" );*/
+                      Toast.makeText ( MainActivity.this, "Please Enter MiddleName", Toast.LENGTH_LONG ).show ( );
+                }
+
+
+
+               /* else if ( email.isEmpty ( ) || ! email.contains ( "@" ) )*/
+
+                else if( TextUtils.isEmpty ( Email ))
+
+                {
+                    Toast.makeText ( MainActivity.this, " Please Enter Email Address", Toast.LENGTH_SHORT ).show ( );
+                    // am_checked=0;
+                }
+
+                else if ( ! Email.matches( emailPattern ) )
+                    {
+                        Toast.makeText ( MainActivity.this, "Invalid email address", Toast.LENGTH_LONG ).show ( );
+                        //or
+                        /*  textView.setText ( "invalid email" );*/
+                       /*   else
+                        {
+                            Toast.makeText ( MainActivity.this, "email address register", Toast.LENGTH_LONG ).show ( );
+                        }*/
                     }
-                    /*  Toast.makeText ( MainActivity.this, "ok", Toast.LENGTH_LONG ).show ( );*/
-                } else if ( mobileNumber.isEmpty ( ) ) {
-                    showerror ( editTextMobilenumber, "Please Enter Moblile Number" );
-                    /*  Toast.makeText ( MainActivity.this, "ok", Toast.LENGTH_LONG ).show ( );*/
-                } else if ( password.isEmpty ( ) ) {
-                    showerror ( editTextPassword, "Please Enter Password" );
-                    /*  Toast.makeText ( MainActivity.this, "ok", Toast.LENGTH_LONG ).show ( );*/
-                } else if ( confirmPassword.isEmpty ( ) ) {
-                    showerror ( editTextConfirmPassword, "Please Enter Confirm Password" );
-                    /*  Toast.makeText ( MainActivity.this, "ok", Toast.LENGTH_LONG ).show ( );*/
-                } else if ( dateOfbirth.isEmpty ( ) ) {
+
+
+
+
+
+                else if( TextUtils.isEmpty ( MobileNumber ))
+
+                {
+                    Toast.makeText ( MainActivity.this, " Please Enter Moblie number", Toast.LENGTH_SHORT ).show ( );
+                    // am_checked=0;
+                }
+
+                else if(MobileNumber.length()<10 || MobileNumber.length()>10 /*|| !number.matches(regexStr)==false */ )
+                {
+                    Toast.makeText ( MainActivity.this, "Invalid number", Toast.LENGTH_SHORT ).show ( );
+                    // am_checked=0;
+                }
+
+                /////////////////password
+                else if( TextUtils.isEmpty ( password ))
+
+                {
+                    Toast.makeText ( MainActivity.this, " Please Enter Password", Toast.LENGTH_SHORT ).show ( );
+                    // am_checked=0;
+                }
+
+                else if(password.length()<8 /*||*/ /* MobileNumber.length()>10 *//*|| !number.matches(regexStr)==false */ )
+                {
+                    Toast.makeText ( MainActivity.this, "Please Enter minimum 8 Digits", Toast.LENGTH_SHORT ).show ( );
+                    // am_checked=0;
+                }
+
+                else if( TextUtils.isEmpty ( confirmPassword ))
+
+                {
+                    Toast.makeText ( MainActivity.this, " Please Enter confirmPassword", Toast.LENGTH_SHORT ).show ( );
+                    // am_checked=0;
+                }
+
+                else if(!confirmPassword.equals ( password ) /*||*/ /* MobileNumber.length()>10 *//*|| !number.matches(regexStr)==false */ )
+                {
+                    Toast.makeText ( MainActivity.this, "your ConfirmPassword is not mathing", Toast.LENGTH_SHORT ).show ( );
+                    // am_checked=0;
+                }
+                else if ( dateOfbirth.isEmpty ( ) ) {
                     showerror ( editTextDateofbirth, "Please Enter Date of Birth" );
                     /*  Toast.makeText ( MainActivity.this, "ok", Toast.LENGTH_LONG ).show ( );*/
                 } else {
