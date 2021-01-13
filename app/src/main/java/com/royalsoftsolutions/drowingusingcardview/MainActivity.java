@@ -27,12 +27,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     /*    private CheckBox checkBox;*/
     private EditText editTextFirstname, editTextLastname, editTextMiddlename, editTextMobilenumber, editTextEmail, editTextPassword, editTextConfirmPassword, editTextDateofbirth;
     private RadioButton radioButtonMale, radioButtonFemale;
+    private   DatePickerDialog datepicker;
     private CheckBox checkBoxCondition;
     private Button buttonCreateaccount, buttonLogin;
     private TextInputEditText eText;
 
     private Calendar calendar;
-    private DatePickerDialog datepicker;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +56,34 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         buttonCreateaccount = findViewById ( R.id.buttoncreateaccount );
         buttonCreateaccount.setEnabled ( false );
         editTextDateofbirth.setInputType ( InputType.TYPE_NULL );
+
+        editTextDateofbirth.setInputType(InputType.TYPE_NULL);
+
+        editTextDateofbirth.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                final Calendar cldr = Calendar.getInstance();
+                int day = cldr.get(Calendar.DAY_OF_MONTH);
+                int month = cldr.get(Calendar.MONTH);
+                int year = cldr.get(Calendar.YEAR);
+
+                // date picker dialog
+                datepicker = new DatePickerDialog(MainActivity.this,
+                        android.R.style.Theme_Holo_Light_Dialog_MinWidth,
+                        new DatePickerDialog.OnDateSetListener() {
+
+                            @Override
+                            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                                editTextDateofbirth.setText(dayOfMonth + "/" + (monthOfYear + 1) + "/" + year);
+                            }
+
+                        }, year, month, day);
+
+                datepicker.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                datepicker.show();
+            }
+        });
 
         checkBoxCondition.setOnClickListener ( new View.OnClickListener ( ) {
             @Override
@@ -218,8 +247,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     Toast.makeText ( MainActivity.this, "your ConfirmPassword is not mathing", Toast.LENGTH_SHORT ).show ( );
                     // am_checked=0;
                 }
-                else if ( dateOfbirth.isEmpty ( ) ) {
-                    showerror ( editTextDateofbirth, "Please Enter Date of Birth" );
+                else if ( TextUtils.isEmpty ( DateOfbirth )) {
+                    Toast.makeText ( MainActivity.this, "Please Enter Date of Birth", Toast.LENGTH_SHORT ).show ( );
+                   /* showerror ( editTextDateofbirth, "Please Enter Date of Birth" );*/
                     /*  Toast.makeText ( MainActivity.this, "ok", Toast.LENGTH_LONG ).show ( );*/
                 } else {
                     Toast.makeText ( MainActivity.this, "ok done", Toast.LENGTH_LONG ).show ( );
