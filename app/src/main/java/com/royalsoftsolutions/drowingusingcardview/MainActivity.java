@@ -65,6 +65,7 @@ private RadioButton radioButton;
             @Override
             public void onClick(View v) {
                 editTextDateofbirth.setInputType ( InputType.TYPE_NULL );
+              /*  editTextDateofbirth.getText ().toString ().trim ();*/
                 final Calendar cldr = Calendar.getInstance();
                 int day = cldr.get(Calendar.DAY_OF_MONTH);
                 int month = cldr.get(Calendar.MONTH);
@@ -77,25 +78,38 @@ private RadioButton radioButton;
 
                             @Override
                             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                              if (dayOfMonth<10 || (monthOfYear + 1)<10  )
-                              {
+                            /*  if (dayOfMonth<10 || (monthOfYear + 1)<10  )*/
 
-                                  if(dayOfMonth<10)
+
+                                if(dayOfMonth<10 || (monthOfYear + 1)<10  )
                               {
-                                  editTextDateofbirth.setText("0"+ dayOfMonth + "/" +(monthOfYear + 1) + "/" + year);
-                              }
-                                else   if(monthOfYear<10)
+                                  if(dayOfMonth<10 || (monthOfYear + 1)<10  )
                                   {
-                                      editTextDateofbirth.setText( dayOfMonth + "/0" +(monthOfYear + 1) + "/" + year);
+                                      if((monthOfYear + 1)<10)
+
+                                      {
+                                          editTextDateofbirth.setText( dayOfMonth + "/0" +(monthOfYear + 1) + "/" + year);
+                                      }
+                                      else if(dayOfMonth<10)
+                                      {
+                                          editTextDateofbirth.setText("0"+ dayOfMonth + "/" +(monthOfYear + 1) + "/" + year);
+                                      }
+
                                   }
+                                  else if(dayOfMonth<10 && (monthOfYear + 1)<10  )
+                                  {
+                                      editTextDateofbirth.setText ( "0"+dayOfMonth + "/0" + (monthOfYear + 1) + "/" + year );
+                                  }
+                                 /*
 
-
+                                  */
                               }
-                              else {
 
 
-                                  editTextDateofbirth.setText ( dayOfMonth + "/" + (monthOfYear + 1) + "/" + year );
-                              }
+                                else
+                                  {
+                                      editTextDateofbirth.setText ( dayOfMonth + "/" + (monthOfYear + 1) + "/" + year );
+                                  }
                             }
 
                         }, year, month, day);
