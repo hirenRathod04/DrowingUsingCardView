@@ -57,12 +57,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         buttonCreateaccount.setEnabled ( false );
         editTextDateofbirth.setInputType ( InputType.TYPE_NULL );
 
-        editTextDateofbirth.setInputType(InputType.TYPE_NULL);
+        editTextDateofbirth.setFocusable(false);
 
         editTextDateofbirth.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                editTextDateofbirth.setInputType ( InputType.TYPE_NULL );
                 final Calendar cldr = Calendar.getInstance();
                 int day = cldr.get(Calendar.DAY_OF_MONTH);
                 int month = cldr.get(Calendar.MONTH);
@@ -172,35 +172,70 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 String Password = editTextPassword.getText ( ).toString ( ).trim ();
                 String ConfirmPassword = editTextConfirmPassword.getText ( ).toString ( ).trim ();
                 String DateOfbirth = editTextDateofbirth.getText ( ).toString ( ).trim ();
+                editTextDateofbirth.setInputType(InputType.TYPE_NULL);
 
 
                 if (fname.contains(" ")) {
                    /* fname.setError("No Spaces Allowed");*/
-
                     Toast.makeText ( MainActivity.this, "No Spaces Allowed in First Name", Toast.LENGTH_LONG ).show ( );
+                    editTextFirstname.requestFocus();
                 }
+
                else if (TextUtils.isEmpty ( fname ) )
-                {
-                   // showerror ( editTextFirstname, "Please Enter FirstName" );
+                {// showerror ( editTextFirstname, "Please Enter FirstName" );
                     Toast.makeText ( MainActivity.this, "please enter first name", Toast.LENGTH_LONG ).show ( );
-                } else if ( TextUtils.isEmpty ( lname ) )
+                    editTextFirstname.requestFocus();
+                }
+
+
+
+
+                else if ( lname.contains(" "))
+                {/*showerror ( editTextLastname, "Please Enter LastName" );*/
+                    Toast.makeText ( MainActivity.this, "No Spaces Allowed", Toast.LENGTH_LONG ).show ( );
+                    editTextLastname.requestFocus();
+
+                }
+
+                else if ( TextUtils.isEmpty ( lname ) )
                 {/*showerror ( editTextLastname, "Please Enter LastName" );*/
                       Toast.makeText ( MainActivity.this, "Please Enter LastName", Toast.LENGTH_LONG ).show ( );
-                } else if ( TextUtils.isEmpty ( mname ))
+                    editTextLastname.requestFocus();
+
+                }
+             else if ( mname.contains(" "))
+            {
+                /*showerror ( editTextMiddlename, "Please Enter MiddleName" );*/
+                Toast.makeText ( MainActivity.this, "No Spaces Allowed", Toast.LENGTH_LONG ).show ( );
+                editTextMiddlename.requestFocus();
+            }
+
+                else if ( TextUtils.isEmpty ( mname ))
                 {
                     /*showerror ( editTextMiddlename, "Please Enter MiddleName" );*/
-                      Toast.makeText ( MainActivity.this, "Please Enter MiddleName", Toast.LENGTH_LONG ).show ( );
+                    Toast.makeText ( MainActivity.this, "Please Enter MiddleName", Toast.LENGTH_LONG ).show ( );
+                    editTextMiddlename.requestFocus();
                 }
 
 
 
+                else if( email.contains(" "))
+
+                {
+                    Toast.makeText ( MainActivity.this, " No Spaces Allowed", Toast.LENGTH_SHORT ).show ( );
+                    // am_checked=0;
+                    editTextEmail.requestFocus();
+                }
                /* else if ( email.isEmpty ( ) || ! email.contains ( "@" ) )*/
+
+
 
                 else if( TextUtils.isEmpty ( Email ))
 
                 {
                     Toast.makeText ( MainActivity.this, " Please Enter Email Address", Toast.LENGTH_SHORT ).show ( );
                     // am_checked=0;
+                    editTextEmail.requestFocus();
                 }
 
                 else if ( ! Email.matches( emailPattern ) )
@@ -216,49 +251,82 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
 
+                else if( MobileNumber.contains(" "))
 
+                {
+                    Toast.makeText ( MainActivity.this, " No Spaces Allowed", Toast.LENGTH_SHORT ).show ( );
+                    // am_checked=0;
+                    editTextMobilenumber.requestFocus();
+                }
 
                 else if( TextUtils.isEmpty ( MobileNumber ))
 
                 {
                     Toast.makeText ( MainActivity.this, " Please Enter Moblie number", Toast.LENGTH_SHORT ).show ( );
+                    editTextMobilenumber.requestFocus();
                     // am_checked=0;
                 }
+
 
                 else if(MobileNumber.length()<10 || MobileNumber.length()>10 /*|| !number.matches(regexStr)==false */ )
                 {
-                    Toast.makeText ( MainActivity.this, "Invalid number", Toast.LENGTH_SHORT ).show ( );
+                    Toast.makeText ( MainActivity.this, "Moblie number must be 10 digit", Toast.LENGTH_SHORT ).show ( );
                     // am_checked=0;
+                    editTextMobilenumber.requestFocus();
                 }
 
+
+               /* else if( password.contains(" "))
+
+                {
+                    Toast.makeText ( MainActivity.this, " No Spaces Allowed", Toast.LENGTH_SHORT ).show ( );
+                    // am_checked=0;
+                    editTextPassword.requestFocus();
+                }*/
                 /////////////////password
                 else if( TextUtils.isEmpty ( password ))
 
                 {
                     Toast.makeText ( MainActivity.this, " Please Enter Password", Toast.LENGTH_SHORT ).show ( );
                     // am_checked=0;
+                    editTextPassword.requestFocus();
                 }
+
 
                 else if(password.length()<8 /*||*/ /* MobileNumber.length()>10 *//*|| !number.matches(regexStr)==false */ )
                 {
                     Toast.makeText ( MainActivity.this, "Please Enter minimum 8 Digits", Toast.LENGTH_SHORT ).show ( );
                     // am_checked=0;
+                    editTextPassword.requestFocus();
                 }
+
+
+               /* else if( confirmPassword.contains(" "))
+
+                {
+                    Toast.makeText ( MainActivity.this, " No Spaces Allowed", Toast.LENGTH_SHORT ).show ( );
+                    // am_checked=0;
+                    editTextConfirmPassword.requestFocus();
+                }*/
 
                 else if( TextUtils.isEmpty ( confirmPassword ))
 
                 {
                     Toast.makeText ( MainActivity.this, " Please Enter confirmPassword", Toast.LENGTH_SHORT ).show ( );
                     // am_checked=0;
+                    editTextConfirmPassword.requestFocus();
                 }
+
 
                 else if(!confirmPassword.equals ( password ) /*||*/ /* MobileNumber.length()>10 *//*|| !number.matches(regexStr)==false */ )
                 {
                     Toast.makeText ( MainActivity.this, "your ConfirmPassword is not mathing", Toast.LENGTH_SHORT ).show ( );
                     // am_checked=0;
+                    editTextConfirmPassword.requestFocus();
                 }
                 else if ( TextUtils.isEmpty ( DateOfbirth )) {
                     Toast.makeText ( MainActivity.this, "Please Enter Date of Birth", Toast.LENGTH_SHORT ).show ( );
+                    editTextConfirmPassword.requestFocus();
                    /* showerror ( editTextDateofbirth, "Please Enter Date of Birth" );*/
                     /*  Toast.makeText ( MainActivity.this, "ok", Toast.LENGTH_LONG ).show ( );*/
                 } else {
