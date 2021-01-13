@@ -9,6 +9,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.InputType;
 import android.text.TextUtils;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -31,7 +32,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private CheckBox checkBoxCondition;
     private Button buttonCreateaccount, buttonLogin;
     private TextInputEditText eText;
-
+private RadioButton radioButton;
     private Calendar calendar;
 
 
@@ -54,7 +55,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         radioButtonFemale = findViewById ( R.id.radioButtonfemale );
         checkBoxCondition = findViewById ( R.id.checkBoxcondition );
         buttonCreateaccount = findViewById ( R.id.buttoncreateaccount );
-        buttonCreateaccount.setEnabled ( false );
+
+                buttonCreateaccount.setEnabled ( false );
         editTextDateofbirth.setInputType ( InputType.TYPE_NULL );
 
         editTextDateofbirth.setFocusable(false);
@@ -75,7 +77,25 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                             @Override
                             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                                editTextDateofbirth.setText(dayOfMonth + "/" + (monthOfYear + 1) + "/" + year);
+                              if (dayOfMonth<10 || (monthOfYear + 1)<10  )
+                              {
+
+                                  if(dayOfMonth<10)
+                              {
+                                  editTextDateofbirth.setText("0"+ dayOfMonth + "/" +(monthOfYear + 1) + "/" + year);
+                              }
+                                else   if(monthOfYear<10)
+                                  {
+                                      editTextDateofbirth.setText( dayOfMonth + "/0" +(monthOfYear + 1) + "/" + year);
+                                  }
+
+
+                              }
+                              else {
+
+
+                                  editTextDateofbirth.setText ( dayOfMonth + "/" + (monthOfYear + 1) + "/" + year );
+                              }
                             }
 
                         }, year, month, day);
@@ -217,7 +237,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     editTextMiddlename.requestFocus();
                 }
 
+         else if (!isValidEmail(email))
+                 {
+                     Toast.makeText ( MainActivity.this, " Please Enter Valid Email Address", Toast.LENGTH_SHORT ).show ( );
 
+                }
+
+
+/*
 
                 else if( email.contains(" "))
 
@@ -226,7 +253,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     // am_checked=0;
                     editTextEmail.requestFocus();
                 }
-               /* else if ( email.isEmpty ( ) || ! email.contains ( "@" ) )*/
+               */
+/* else if ( email.isEmpty ( ) || ! email.contains ( "@" ) )*//*
+
 
 
 
@@ -242,12 +271,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     {
                         Toast.makeText ( MainActivity.this, "Invalid email address", Toast.LENGTH_LONG ).show ( );
                         //or
-                        /*  textView.setText ( "invalid email" );*/
-                       /*   else
+                        */
+/*  textView.setText ( "invalid email" );*//*
+
+                       */
+/*   else
                         {
                             Toast.makeText ( MainActivity.this, "email address register", Toast.LENGTH_LONG ).show ( );
-                        }*/
+                        }*//*
+
                     }
+*/
 
 
 
@@ -339,6 +373,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
 
+
        /* String uname = editTextFirstname.getText ( ).toString ( );
 
 
@@ -361,6 +396,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             default:
                 *//* gotoNextactivity ();*//*
         }*/
+
+
+       public static boolean isValidEmail(CharSequence email) {
+           return (!TextUtils.isEmpty(email) && Patterns.EMAIL_ADDRESS.matcher(email).matches());
+       }
 
 
     private void showerror(EditText input, String s) {
