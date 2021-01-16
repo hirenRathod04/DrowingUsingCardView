@@ -17,9 +17,9 @@ import org.json.JSONObject
 import java.util.*
 
 class StringRequestVolley(
-    private val context: Context,
-    private val paramsMap: Map<String, String>,
-    private val volleyResponseListener: VolleyResponseListener
+        private val context: Context,
+        private val paramsMap: Map<String, String>,
+        private val volleyResponseListener: VolleyResponseListener
 ) {
 
     private val requestQueue: RequestQueue
@@ -27,36 +27,36 @@ class StringRequestVolley(
 
     private fun sendStringRequest() {
         val stringRequest: StringRequest = object : StringRequest(
-            Method.POST, Constant.BASE_URL,
-            Response.Listener { response ->
+                Method.POST, Constant.BASE_URL,
+                Response.Listener { response ->
 
-                try {
-                    val jsonObject = JSONObject(response)
-                    volleyResponseListener.onResponse(response)
-                } catch (e: JSONException) {
-                    e.printStackTrace()
-                }
-            },
-            Response.ErrorListener { error ->
+                    try {
+                        val jsonObject = JSONObject(response)
+                        volleyResponseListener.onResponse(response)
+                    } catch (e: JSONException) {
+                        e.printStackTrace()
+                    }
+                },
+                Response.ErrorListener { error ->
 
-                val errorMessage = getVolleyErrorMessage(error)
-                if (errorMessage == Constant.SERVER_ERROR) {
-                    //ClearData.clearAllData(context);
-                    val intent = Intent(context, UnderMaintainanceActivity::class.java)
-                    intent.putExtra("errorMessage", errorMessage)
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-                    context.startActivity(intent)
-                } else {
-                    volleyResponseListener.onError(errorMessage)
-                }
-            }) {
+                    val errorMessage = getVolleyErrorMessage(error)
+                    if (errorMessage == Constant.SERVER_ERROR) {
+                        //ClearData.clearAllData(context);
+                        val intent = Intent(context, UnderMaintainanceActivity::class.java)
+                        intent.putExtra("errorMessage", errorMessage)
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                        context.startActivity(intent)
+                    } else {
+                        volleyResponseListener.onError(errorMessage)
+                    }
+                }) {
             override fun getHeaders(): Map<String, String> {
 
                 val headers: MutableMap<String, String> = HashMap()
                 //headers.put("Content-Type", "application/x-www-form-urlencoded");
-              headers["Apikey"] = "GSFS"
-                headers["Userdevicetype"] ="android"
+                headers["Apikey"] = "GSFS"
+                headers["Userdevicetype"] = "android"
                 headers["Userdevicetoken"] = ""
                 headers["Userdeviceid"] = Settings.Secure.getString(context.contentResolver, Settings.Secure.ANDROID_ID)
                 headers["Userid"] = "1"
@@ -72,7 +72,7 @@ class StringRequestVolley(
 
         stringRequest.setShouldCache(false)
         stringRequest.retryPolicy =
-            DefaultRetryPolicy(120000, 0, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT)
+                DefaultRetryPolicy(120000, 0, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT)
         requestQueue.add(stringRequest)
     }
 

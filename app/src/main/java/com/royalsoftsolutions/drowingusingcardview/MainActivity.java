@@ -3,9 +3,11 @@ package com.royalsoftsolutions.drowingusingcardview;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
+import android.app.ProgressDialog;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.text.InputType;
 import android.text.TextUtils;
 import android.util.Patterns;
@@ -17,7 +19,17 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
+import org.jetbrains.annotations.Nullable;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Map;
+
+import forApi.Common;
+import forApi.StringRequestVolley;
+import forApi.VolleyResponseListener;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -29,11 +41,17 @@ public class MainActivity extends AppCompatActivity {
     private Button buttonCreateaccount;
     private Calendar calendar;
     private String setDate = "2", setYear = "3", setMonth = "1997";
+    private ProgressDialog dialog; //declaration
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate ( savedInstanceState );
         setContentView ( R.layout.activity_main );
+
+        // initialization
+        dialog = new ProgressDialog(this);
+        dialog.setMessage ( "Please wait..." );
+        dialog.setCanceledOnTouchOutside ( false );
 
         editTextFirstname = findViewById ( R.id.editTextfirstname );
         editTextMiddlename = findViewById ( R.id.editTextmiddlename );
@@ -99,6 +117,51 @@ public class MainActivity extends AppCompatActivity {
             }
         } );
     }
+
+
+    private void changePassword(final String firstName, final String middleName, final String lastName,
+                                final String email,
+                                final String mobileNumber, final String password,
+                                final String dob,
+                                final String gender, final String profileImageName,
+                                final String attachmentBase64Str)
+    {
+        dialog.show();
+
+        Map<String, String> params = new HashMap ();
+        params.put("ACTION_CALL_FUNCTION", "registration");
+        params.put("firstName",  firstName);
+
+        params.put("middleName", middleName);
+        params.put("lastName",   lastName);
+        params.put("email",email);
+        params.put("mobile", mobileNumber);
+        params.put("password", password);
+        params.put("dob", dob);
+        params.put("gender", gender);
+        params.put("profileImageName", profileImageName);
+        params.put("attachment", attachmentBase64Str);
+
+      /*  params.put("deviceid", deviceid);
+        params.put("umid", AppUser.umid);
+        params.put("password", Base64.encodeToString(new_pass.getBytes(), Base64.DEFAULT));
+        params.put("current_password", Base64.encodeToString(current_pass.getBytes(), Base64.DEFAULT));*/
+
+        new StringRequestVolley (MainActivity.this, params,
+                new VolleyResponseListener () {
+
+                    @Override
+                    public void onError(@Nullable String errorMessage) {
+
+                    }
+
+                    @Override
+                    public void onResponse(@Nullable String response) {
+
+                    }
+                });
+    }
+
 
     private void validation() {
         buttonCreateaccount.setOnClickListener ( new View.OnClickListener ( ) {
@@ -203,4 +266,6 @@ public class MainActivity extends AppCompatActivity {
     public static boolean isValidEmail(CharSequence email) {
         return (! TextUtils.isEmpty ( email ) && Patterns.EMAIL_ADDRESS.matcher ( email ).matches ( ));
     }
+
+
 }
