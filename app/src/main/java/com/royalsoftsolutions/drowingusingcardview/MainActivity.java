@@ -24,6 +24,7 @@ import com.google.android.material.textfield.TextInputLayout;
 import java.util.BitSet;
 import java.util.Calendar;
 
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     /*    private CheckBox checkBox;*/
     private EditText editTextFirstname, editTextLastname, editTextMiddlename, editTextMobilenumber, editTextEmail, editTextPassword, editTextConfirmPassword, editTextDateofbirth;
@@ -34,6 +35,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private TextInputEditText eText;
 private RadioButton radioButton;
     private Calendar calendar;
+    int month,date,year;
 
 
     @Override
@@ -65,6 +67,7 @@ private RadioButton radioButton;
             @Override
             public void onClick(View v) {
                 editTextDateofbirth.setInputType ( InputType.TYPE_NULL );
+
               /*  editTextDateofbirth.getText ().toString ().trim ();*/
                 final Calendar cldr = Calendar.getInstance();
                 int day = cldr.get(Calendar.DAY_OF_MONTH);
