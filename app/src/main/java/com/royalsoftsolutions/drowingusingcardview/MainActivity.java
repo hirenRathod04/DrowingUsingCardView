@@ -107,7 +107,7 @@ public class MainActivity extends AppCompatActivity {
 
 
                 String Fname = editTextFirstname.getText ( ).toString ( ).trim ( );
-                /*  String Fname = Fname.replaceAll("\\s+","");*/
+
 
 
                 String Lname = editTextLastname.getText ( ).toString ( ).trim ( );
@@ -117,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
                 String Password = editTextPassword.getText ( ).toString ( ).trim ( );
                 String ConfirmPassword = editTextConfirmPassword.getText ( ).toString ( ).trim ( );
                 String DateOfbirth = editTextDateofbirth.getText ( ).toString ( ).trim ( );
-                //  String  input = EditTextinput.getText().toString();
+
 
                 checking ( Fname, Lname, Mname, Email, MobileNumber, Password, ConfirmPassword, DateOfbirth );
             }
@@ -175,7 +175,7 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText ( MainActivity.this, " Please Enter Password", Toast.LENGTH_SHORT ).show ( );
                     editTextPassword.requestFocus ( );
 
-                } else if ( password.length ( ) < 8 /*||*/ /* MobileNumber.length()>10 *//*|| !number.matches(regexStr)==false */ ) {
+                } else if ( password.length ( ) < 8 ) {
                     Toast.makeText ( MainActivity.this, "Please Enter minimum 8 Digits", Toast.LENGTH_SHORT ).show ( );
                     editTextPassword.requestFocus ( );
                 }
@@ -183,7 +183,7 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText ( MainActivity.this, " Please Enter confirmPassword", Toast.LENGTH_SHORT ).show ( );
                     editTextConfirmPassword.requestFocus ( );
 
-                } else if ( ! confirmPassword.equals ( password ) /*||*/ /* MobileNumber.length()>10 *//*|| !number.matches(regexStr)==false */ ) {
+                } else if ( ! confirmPassword.equals ( password )  ) {
                     Toast.makeText ( MainActivity.this, "your ConfirmPassword is not mathing", Toast.LENGTH_SHORT ).show ( );
                     editTextConfirmPassword.requestFocus ( );
 
