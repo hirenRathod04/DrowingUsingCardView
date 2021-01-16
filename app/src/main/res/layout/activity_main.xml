@@ -1,408 +1,389 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ssone"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
     tools:context=".MainActivity">
 
-    <ScrollView
-        android:id="@+id/ssone"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0">
+        android:layout_height="wrap_content">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <ImageView
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="220dp"
+            android:background="@drawable/back_screen_top"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription" />
 
-            <ImageView
+        <TextView
+            android:id="@+id/tvSingup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="45dp"
+            android:text="@string/sign_up"
+            android:textColor="@color/white"
+            android:textSize="@dimen/toolbar_title_size"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginRight="20dp"
+            app:cardCornerRadius="15dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvSingup">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="220dp"
-                android:background="@drawable/back_screen_top"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:layout_height="match_parent">
 
-            <TextView
-                android:id="@+id/tvSingup"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="45dp"
-                android:text="Sign Up"
-                android:textColor="@color/white"
-                android:textSize="30dp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/civ1"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_marginTop="30dp"
+                    android:src="@drawable/shivang2"
+                    app:civ_border_color="@color/yellow"
+                    app:civ_border_width="2dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cardview"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="40dp"
-                android:layout_marginRight="20dp"
-                app:cardCornerRadius="15dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvSingup">
+                <ImageView
+                    android:id="@+id/ivemove"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:background="@drawable/ic_baseline_remove_circle_outline_24"
+                    android:visibility="invisible"
+                    app:layout_constraintEnd_toEndOf="@id/civ1"
+                    app:layout_constraintTop_toTopOf="@id/civ1"
+                    tools:ignore="ContentDescription" />
 
-                <androidx.constraintlayout.widget.ConstraintLayout
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/mtiFirtname"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="4dp"
+                    app:layout_constraintEnd_toStartOf="@+id/mtilastname"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/civ1">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/editTextfirstname"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="First Name"
+                        android:inputType="text"
+                        android:maxLines="1" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/mtilastname"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="12dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/mtiFirtname"
+                    app:layout_constraintTop_toBottomOf="@id/civ1">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/editTextlastname"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Last Name"
+                        android:inputType="text"
+                        android:maxLines="1" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/mtiMiddlename"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="12dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/mtiFirtname">
 
-                    <de.hdodenhof.circleimageview.CircleImageView
-                        android:id="@+id/civ1"
-                        android:layout_width="80dp"
-                        android:layout_height="80dp"
-                        android:layout_marginTop="30dp"
-                        android:src="@drawable/shivang2"
-                        app:civ_border_color="@color/yellow"
-                        app:civ_border_overlay="true"
-                        app:civ_border_width="2dp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <ImageView
-                        android:id="@+id/ivemove"
-                        android:layout_width="25dp"
-                        android:layout_height="25dp"
-                        android:background="@drawable/ic_baseline_remove_circle_outline_24"
-                        android:visibility="invisible"
-                        app:layout_constraintEnd_toEndOf="@id/civ1"
-                        app:layout_constraintTop_toTopOf="@id/civ1" />
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/mtiFirtname"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="12dp"
-                        android:layout_marginTop="20dp"
-                        android:layout_marginEnd="4dp"
-                        app:layout_constraintEnd_toStartOf="@+id/mtilastname"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/civ1">
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/editTextfirstname"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:hint="First Name"
-                            android:inputType="text"
-                            android:maxLines="1" />
-
-                    </com.google.android.material.textfield.TextInputLayout>
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/mtilastname"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="4dp"
-                        android:layout_marginTop="20dp"
-                        android:layout_marginEnd="12dp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/mtiFirtname"
-                        app:layout_constraintTop_toBottomOf="@id/civ1">
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/editTextlastname"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:hint="Last Name"
-                            android:inputType="text"
-                            android:maxLines="1" />
-
-                    </com.google.android.material.textfield.TextInputLayout>
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/mtiMiddlename"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/editTextmiddlename"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="12dp"
-                        android:layout_marginTop="15dp"
-                        android:layout_marginEnd="12dp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/mtiFirtname">
+                        android:hint="Middle Name"
+                        android:inputType="text"
+                        android:maxLines="1" />
 
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/editTextmiddlename"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:hint="Middle Name"
-                            android:inputType="text"
-                            android:maxLines="1" />
-
-                    </com.google.android.material.textfield.TextInputLayout>
+                </com.google.android.material.textfield.TextInputLayout>
 
 
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/mtiEmail"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/mtiEmail"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="12dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/mtiMiddlename">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/editTextemail"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="12dp"
-                        android:layout_marginTop="15dp"
-                        android:layout_marginEnd="12dp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/mtiMiddlename">
+                        android:drawableEnd="@drawable/ic_baseline_email_24"
+                        android:drawableTint="@color/blue"
+                        android:hint="Email"
+                        android:inputType="text" />
 
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/editTextemail"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:drawableEnd="@drawable/ic_baseline_email_24"
-                            android:drawableTint="@color/blue"
-                            android:hint="Email"
-                            android:inputType="text" />
+                </com.google.android.material.textfield.TextInputLayout>
 
-                    </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/mtiMobilenumber"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="12dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/mtiEmail"
+                    app:startIconTint="@color/blue">
 
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/mtiMobilenumber"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/editTextmoblienumber"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="12dp"
-                        android:layout_marginTop="15dp"
-                        android:layout_marginEnd="12dp"
-                        app:endIconDrawable="@drawable/ic_baseline_email_24"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/mtiEmail"
-                        app:startIconTint="@color/blue">
+                        android:drawableEnd="@drawable/ic_baseline_call_24"
+                        android:drawableTint="@color/blue"
+                        android:hint="Moblie Number"
+                        android:inputType="number"
+                        android:maxLength="10" />
 
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:maxLength="10"
-                            android:id="@+id/editTextmoblienumber"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:drawableEnd="@drawable/ic_baseline_call_24"
-                            android:drawableTint="@color/blue"
-                            android:hint="Moblie Number"
-                            android:inputType="number" />
+                </com.google.android.material.textfield.TextInputLayout>
 
-                    </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/mtiPassword"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="12dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/mtiMobilenumber"
+                    app:passwordToggleEnabled="true"
+                    app:passwordToggleTint="@color/blue">
 
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/mtiPassword"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/editTextpassword"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="12dp"
-                        android:layout_marginTop="15dp"
-                        android:layout_marginEnd="12dp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/mtiMobilenumber"
-                        app:passwordToggleEnabled="true"
-                        app:passwordToggleTint="@color/blue">
+                        android:hint="Password"
+                        android:inputType="textPassword"
+                        android:maxLines="1" />
 
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/editTextpassword"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:hint="Password"
-                            android:inputType="textPassword"
-                            android:maxLines="1" />
+                </com.google.android.material.textfield.TextInputLayout>
 
-                    </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/mtiConfirmpassword"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="12dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/mtiPassword"
+                    app:passwordToggleEnabled="true"
+                    app:passwordToggleTint="@color/blue">
 
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/mtiConfirmpassword"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/editTextconfirmpasword"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="12dp"
-                        android:layout_marginTop="15dp"
-                        android:layout_marginEnd="12dp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/mtiPassword"
-                        app:passwordToggleEnabled="true"
-                        app:passwordToggleTint="@color/blue">
+                        android:hint="Confirm Password"
+                        android:inputType="textPassword"
+                        android:maxLines="1" />
 
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/editTextconfirmpasword"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:hint="Confirm Password"
-                            android:inputType="textPassword"
-                            android:maxLines="1" />
+                </com.google.android.material.textfield.TextInputLayout>
 
-                    </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/mtiDateofbirth"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="12dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/mtiConfirmpassword">
 
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/mtiDateofbirth"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/editTextdateofbirrth"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="12dp"
-                        android:layout_marginTop="15dp"
-                        android:layout_marginEnd="12dp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/mtiConfirmpassword">
+                        android:focusable="false"
+                        android:clickable="true"
+                        android:drawableEnd="@drawable/ic_baseline_calendar_today_24"
+                        android:drawableTint="@color/blue"
+                        android:hint="Date of Birth"
+                        android:inputType="none" />
 
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/editTextdateofbirrth"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:drawableEnd="@drawable/ic_baseline_calendar_today_24"
-                            android:drawableTint="@color/blue"
-                            android:focusableInTouchMode="true"
-                            android:hint="Date of Birth"
-                            android:inputType="none"
-                             />
+                </com.google.android.material.textfield.TextInputLayout>
 
-                    </com.google.android.material.textfield.TextInputLayout>
+                <TextView
+                    android:id="@+id/textViewgender"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="Gender"
+                    android:textColor="@color/blue"
+                    android:textSize="13dp"
+                    app:layout_constraintStart_toStartOf="@id/mtiDateofbirth"
+                    app:layout_constraintTop_toBottomOf="@id/mtiDateofbirth" />
 
-                    <TextView
-                        android:id="@+id/textViewgender"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:text="Gender"
-                        android:textColor="@color/blue"
-                        android:textSize="13dp"
-                        app:layout_constraintStart_toStartOf="@id/mtiDateofbirth"
-                        app:layout_constraintTop_toBottomOf="@id/mtiDateofbirth" />
+                <RadioGroup
+                    android:id="@+id/radioGroup"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="12dp"
+                    android:layout_marginTop="8dp"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    app:layout_constraintStart_toStartOf="@id/textViewgender"
+                    app:layout_constraintTop_toTopOf="@id/textViewgender">
 
-                    <RadioGroup
-                        android:id="@+id/radioGroup"
+                    <RadioButton
+                        android:id="@+id/radioButtonmale"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="12dp"
-                        android:layout_marginTop="8dp"
-                        android:gravity="center"
-                        android:orientation="horizontal"
-                        app:layout_constraintStart_toStartOf="@id/textViewgender"
-                        app:layout_constraintTop_toTopOf="@id/textViewgender">
-
-                        <RadioButton
-                            android:id="@+id/radioButtonmale"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="5dp"
-                            android:layout_weight="1"
-                            android:text="Male"
-                            android:textColor="@color/black"
-                            android:textSize="13dp" />
-
-                        <RadioButton
-                            android:id="@+id/radioButtonfemale"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:layout_marginLeft="0dp"
-                            android:layout_marginTop="5dp"
-                            android:layout_weight="1"
-                            android:text="Female"
-                            android:textColor="@color/black"
-                            android:textSize="13dp" />
-
-                    </RadioGroup>
-
-
-                    <CheckBox
-                        android:id="@+id/checkBoxcondition"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="30dp"
-                        android:layout_marginRight="50dp"
-                        android:checked="false"
-
-                        android:text="@string/Condition"
+                        android:layout_marginTop="5dp"
+                        android:layout_weight="1"
+                        android:text="Male"
+                        android:checked="true"
                         android:textColor="@color/black"
-                        android:textSize="13dp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/radioGroup" />
+                        android:textSize="13dp" />
 
-                    <Button
-                        android:id="@+id/buttoncreateaccount"
-                        android:layout_width="0dp"
+                    <RadioButton
+                        android:id="@+id/radioButtonfemale"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="12dp"
-                        android:layout_marginTop="15dp"
-                        android:layout_marginRight="12dp"
-                        android:layout_marginBottom="15dp"
-                        android:background="@drawable/edit_style_corner"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="0dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_weight="1"
+                        android:text="Female"
+                        android:textColor="@color/black"
+                        android:textSize="13dp" />
 
-                        android:text="@string/createaccount"
-                        android:textAllCaps="false"
-                        android:textSize="20dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/checkBoxcondition" />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-            </androidx.cardview.widget.CardView>
-
-            <TextView
-                android:id="@+id/textViewalreadyaccount"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="12dp"
-
-                android:text="@string/already_have_an_account"
-                android:textColor="@color/black"
+                </RadioGroup>
 
 
-                app:layout_constraintEnd_toEndOf="parent"
+                <CheckBox
+                    android:id="@+id/checkBoxcondition"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginRight="50dp"
+                    android:checked="false"
 
+                    android:text="@string/Condition"
+                    android:textColor="@color/black"
+                    android:textSize="13dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/radioGroup" />
 
+                <Button
+                    android:id="@+id/buttoncreateaccount"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginRight="12dp"
+                    android:layout_marginBottom="15dp"
+                    android:background="@drawable/edit_style_corner"
+                    android:enabled="false"
+                    android:text="@string/createaccount"
+                    android:textAllCaps="false"
+                    android:textSize="20dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/checkBoxcondition" />
 
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/textViewalreadyaccount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
             android:layout_marginTop="15dp"
-            android:layout_marginBottom="30dp"
-
-
-            android:textSize="13dp"
             android:layout_marginRight="15dp"
+            android:layout_marginBottom="30dp"
+            android:text="Already have an account?"
+            android:textColor="@color/black"
+            android:textSize="13dp"
             app:layout_constraintBottom_toBottomOf="parent"
-
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/Login"
             app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/cardview"/>
+            app:layout_constraintTop_toBottomOf="@id/cardview" />
 
-            <TextView
-                android:id="@+id/Login"
+        <TextView
+            android:id="@+id/Login"
 
-                android:text="Login"
-                android:textAllCaps="false"
-                android:textStyle="bold"
-                android:textSize="13sp"
-                android:background="@android:color/transparent"
-                android:textColor="@color/blue"
-                android:layout_marginLeft="15dp"
-                android:layout_marginEnd="12dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginEnd="12dp"
+            android:background="@android:color/transparent"
+            android:text="Login"
+            android:textAllCaps="false"
+            android:textColor="@color/blue"
 
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintBottom_toBottomOf="@+id/textViewalreadyaccount"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/textViewalreadyaccount"
-                app:layout_constraintTop_toTopOf="@+id/textViewalreadyaccount"
-                app:layout_constraintVertical_bias="0.0"/>
+            android:textSize="13sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/textViewalreadyaccount"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textViewalreadyaccount"
+            app:layout_constraintTop_toTopOf="@+id/textViewalreadyaccount"
+            app:layout_constraintVertical_bias="0.0" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </ScrollView>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

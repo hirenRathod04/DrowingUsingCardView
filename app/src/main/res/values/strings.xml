@@ -3,5 +3,6 @@
     <string name="Condition">"I have read and agree to GSFinancial Services'Terms and Conditions"</string>
     <string name="createaccount">Create Account</string>
     <string name="already_have_an_account">Already have an account?</string>
+    <string name="sign_up">Sign Up</string>
 
 </resources>
