@@ -63,7 +63,7 @@
                         android:layout_width="80dp"
                         android:layout_height="80dp"
                         android:layout_marginTop="30dp"
-                        android:src="@drawable/kids"
+                        android:src="@drawable/shivang2"
                         app:civ_border_color="@color/yellow"
                         app:civ_border_overlay="true"
                         app:civ_border_width="2dp"
@@ -323,7 +323,7 @@
                         android:layout_marginStart="30dp"
                         android:layout_marginRight="50dp"
                         android:checked="false"
-                        android:onClick="checked"
+
                         android:text="@string/Condition"
                         android:textColor="@color/black"
                         android:textSize="13dp"
@@ -340,7 +340,7 @@
                         android:layout_marginRight="12dp"
                         android:layout_marginBottom="15dp"
                         android:background="@drawable/edit_style_corner"
-                        android:onClick="go_to_nextActivity"
+
                         android:text="@string/createaccount"
                         android:textAllCaps="false"
                         android:textSize="20dp"
@@ -358,25 +358,48 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="12dp"
-                android:layout_marginTop="15dp"
-                android:layout_marginBottom="30dp"
+
                 android:text="@string/already_have_an_account"
                 android:textColor="@color/black"
-                android:textSize="13dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/cardview" />
-            <Button
 
-                android:layout_marginLeft="5dp"
-                android:text="13sp"
-                android:background="@color/white"
+
+                app:layout_constraintEnd_toEndOf="parent"
+
+
+
+
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="30dp"
+
+
+            android:textSize="13dp"
+            android:layout_marginRight="15dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+
+            app:layout_constraintEnd_toStartOf="@+id/Login"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cardview"/>
+
+            <TextView
+                android:id="@+id/Login"
+
+                android:text="Login"
+                android:textAllCaps="false"
+                android:textStyle="bold"
+                android:textSize="13sp"
+                android:background="@android:color/transparent"
                 android:textColor="@color/blue"
-                app:layout_constraintTop_toTopOf="@+id/textViewalreadyaccount"
-                app:layout_constraintStart_toEndOf="@+id/textViewalreadyaccount"
+                android:layout_marginLeft="15dp"
+                android:layout_marginEnd="12dp"
+
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="@+id/textViewalreadyaccount"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/textViewalreadyaccount"
+                app:layout_constraintTop_toTopOf="@+id/textViewalreadyaccount"
+                app:layout_constraintVertical_bias="0.0"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

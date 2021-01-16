@@ -29,13 +29,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     /*    private CheckBox checkBox;*/
     private EditText editTextFirstname, editTextLastname, editTextMiddlename, editTextMobilenumber, editTextEmail, editTextPassword, editTextConfirmPassword, editTextDateofbirth;
     private RadioButton radioButtonMale, radioButtonFemale;
-    private   DatePickerDialog datepicker;
+    private DatePickerDialog datepicker;
     private CheckBox checkBoxCondition;
     private Button buttonCreateaccount, buttonLogin;
     private TextInputEditText eText;
-private RadioButton radioButton;
+    private RadioButton radioButton;
     private Calendar calendar;
-    public int setDate = 2, setYear = 1997,setMonth = (3 - 1);
+    public String setDate = "2", setYear = "1997", setMonth = "3";
+    public boolean aMale = true,bFemale = false;
 
 
     @Override
@@ -51,79 +52,60 @@ private RadioButton radioButton;
         editTextPassword = findViewById ( R.id.editTextpassword );
         editTextConfirmPassword = findViewById ( R.id.editTextconfirmpasword );
         editTextDateofbirth = findViewById ( R.id.editTextdateofbirrth );
-
-
-        radioButtonMale = findViewById ( R.id.radioButtonmale );
-        radioButtonFemale = findViewById ( R.id.radioButtonfemale );
         checkBoxCondition = findViewById ( R.id.checkBoxcondition );
         buttonCreateaccount = findViewById ( R.id.buttoncreateaccount );
 
-                buttonCreateaccount.setEnabled ( false );
+        radioButtonMale = findViewById(R.id.radioButtonmale);
+        radioButtonFemale = findViewById ( R.id.radioButtonfemale );
+        radioButtonMale.setChecked(true);
+       radioButtonFemale.setChecked(false);
+
+
+        buttonCreateaccount.setEnabled ( false );
         editTextDateofbirth.setInputType ( InputType.TYPE_NULL );
 
-        editTextDateofbirth.setFocusable(false);
+        editTextDateofbirth.setFocusable ( false );
 
-        editTextDateofbirth.setOnClickListener(new View.OnClickListener() {
+
+        editTextDateofbirth.setOnClickListener ( new View.OnClickListener ( ) {
             @Override
             public void onClick(View v) {
                 editTextDateofbirth.setInputType ( InputType.TYPE_NULL );
 
-              /*  editTextDateofbirth.getText ().toString ().trim ();*/
-                final Calendar cldr = Calendar.getInstance();
-                int day = cldr.get(Calendar.DAY_OF_MONTH);
-                int month = cldr.get(Calendar.MONTH);
-                int year = cldr.get(Calendar.YEAR);
+                /*  editTextDateofbirth.getText ().toString ().trim ();*/
+                final Calendar cldr = Calendar.getInstance ( );
+                int day = cldr.get ( Calendar.DAY_OF_MONTH );
+                int month = cldr.get ( Calendar.MONTH );
+                int year = cldr.get ( Calendar.YEAR );
 
                 // date picker dialog
-                datepicker = new DatePickerDialog(MainActivity.this,
+                datepicker = new DatePickerDialog ( MainActivity.this,
                         android.R.style.Theme_Holo_Light_Dialog_MinWidth,
-                        new DatePickerDialog.OnDateSetListener() {
+                        new DatePickerDialog.OnDateSetListener ( ) {
 
                             @Override
 
                             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                            /*  if (dayOfMonth<10 || (monthOfYear + 1)<10  )*/
-                                setMonth = monthOfYear;
-                                setDate = dayOfMonth;
-                                setYear =  year;
+                                /*  if (dayOfMonth<10 || (monthOfYear + 1)<10  )*/
+                                setMonth = String.valueOf ( monthOfYear + 1 );
+                                setDate = String.valueOf ( dayOfMonth );
+                                setYear = String.valueOf ( year );
 
-                                if(dayOfMonth<10 || (monthOfYear + 1)<10  )
-                              {
-                                  if(dayOfMonth<10 || (monthOfYear + 1)<10  )
-                                  {
-                                      if((monthOfYear + 1)<10)
-
-                                      {
-                                          editTextDateofbirth.setText( dayOfMonth + "/0" +(monthOfYear + 1) + "/" + year);
-                                      }
-                                      else if(dayOfMonth<10)
-                                      {
-                                          editTextDateofbirth.setText("0"+ dayOfMonth + "/" +(monthOfYear + 1) + "/" + year);
-                                      }
-
-                                  }
-                                  else if(dayOfMonth<10 && (monthOfYear + 1)<10  )
-                                  {
-                                      editTextDateofbirth.setText ( "0"+dayOfMonth + "/0" + (monthOfYear + 1) + "/" + year );
-                                  }
-                                 /*
-
-                                  */
-                              }
-
-
-                                else
-                                  {
-                                      editTextDateofbirth.setText ( dayOfMonth + "/" + (monthOfYear + 1) + "/" + year );
-                                  }
+                                if ( Integer.parseInt ( setDate ) < 10 ) {
+                                    setDate = "0" + setDate;
+                                }
+                                if ( Integer.parseInt ( setMonth ) < 10 ) {
+                                    setMonth = "0" + setMonth;
+                                }
+                                editTextDateofbirth.setText ( setDate + "/" + setMonth + "/" + setYear );
                             }
 
-                        }, setYear, setMonth, setDate);
+                        }, Integer.parseInt ( setYear ), Integer.parseInt ( setMonth ) - 1, Integer.parseInt ( setDate ) );
 
-                datepicker.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                datepicker.show();
+                datepicker.getWindow ( ).setBackgroundDrawable ( new ColorDrawable ( Color.TRANSPARENT ) );
+                datepicker.show ( );
             }
-        });
+        } );
 
         checkBoxCondition.setOnClickListener ( new View.OnClickListener ( ) {
             @Override
@@ -183,19 +165,18 @@ private RadioButton radioButton;
             public void onClick(View v) {
 
 
-                String Fname = editTextFirstname.getText ( ).toString ( ).trim ();
-              /*  String Fname = Fname.replaceAll("\\s+","");*/
+                String Fname = editTextFirstname.getText ( ).toString ( ).trim ( );
+                /*  String Fname = Fname.replaceAll("\\s+","");*/
 
 
-                String Lname = editTextLastname.getText ( ).toString ( ).trim ();
-                String Mname = editTextMiddlename.getText ( ).toString ( ).trim ();
-                String Email = editTextEmail.getText ( ).toString ( ).trim ();
-                String MobileNumber = editTextMobilenumber.getText ( ).toString ( ).trim ();
-                String Password = editTextPassword.getText ( ).toString ( ).trim ();
-                String ConfirmPassword = editTextConfirmPassword.getText ( ).toString ( ).trim ();
-                String DateOfbirth = editTextDateofbirth.getText ( ).toString ( ).trim ();
+                String Lname = editTextLastname.getText ( ).toString ( ).trim ( );
+                String Mname = editTextMiddlename.getText ( ).toString ( ).trim ( );
+                String Email = editTextEmail.getText ( ).toString ( ).trim ( );
+                String MobileNumber = editTextMobilenumber.getText ( ).toString ( ).trim ( );
+                String Password = editTextPassword.getText ( ).toString ( ).trim ( );
+                String ConfirmPassword = editTextConfirmPassword.getText ( ).toString ( ).trim ( );
+                String DateOfbirth = editTextDateofbirth.getText ( ).toString ( ).trim ( );
                 //  String  input = EditTextinput.getText().toString();
-
 
 
                 checking ( Fname, Lname, Mname, Email, MobileNumber, Password, ConfirmPassword, DateOfbirth );
@@ -204,62 +185,47 @@ private RadioButton radioButton;
             }
 
             private void checking(String fname, String lname, String mname, String email, String mobileNumber, String password, String confirmPassword, String dateOfbirth) {
-               /* String Email = email.getText().toString().trim();*/
-                String Email = editTextEmail.getText ( ).toString ( ).trim ();
+                /* String Email = email.getText().toString().trim();*/
+                String Email = editTextEmail.getText ( ).toString ( ).trim ( );
                 String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
-                String MobileNumber = editTextMobilenumber.getText ( ).toString ( ).trim ();
+                String MobileNumber = editTextMobilenumber.getText ( ).toString ( ).trim ( );
 
-                String Password = editTextPassword.getText ( ).toString ( ).trim ();
-                String ConfirmPassword = editTextConfirmPassword.getText ( ).toString ( ).trim ();
-                String DateOfbirth = editTextDateofbirth.getText ( ).toString ( ).trim ();
-                editTextDateofbirth.setInputType(InputType.TYPE_NULL);
+                String Password = editTextPassword.getText ( ).toString ( ).trim ( );
+                String ConfirmPassword = editTextConfirmPassword.getText ( ).toString ( ).trim ( );
+                String DateOfbirth = editTextDateofbirth.getText ( ).toString ( ).trim ( );
+                editTextDateofbirth.setInputType ( InputType.TYPE_NULL );
 
 
-                if (fname.contains(" ")) {
-                   /* fname.setError("No Spaces Allowed");*/
+
+
+
+
+
+                 if ( fname.contains ( " " ) ) {
+                    /* fname.setError("No Spaces Allowed");*/
                     Toast.makeText ( MainActivity.this, "No Spaces Allowed in First Name", Toast.LENGTH_LONG ).show ( );
-                    editTextFirstname.requestFocus();
-                }
-
-               else if (TextUtils.isEmpty ( fname ) )
-                {// showerror ( editTextFirstname, "Please Enter FirstName" );
+                    editTextFirstname.requestFocus ( );
+                } else if ( TextUtils.isEmpty ( fname ) ) {// showerror ( editTextFirstname, "Please Enter FirstName" );
                     Toast.makeText ( MainActivity.this, "please enter first name", Toast.LENGTH_LONG ).show ( );
-                    editTextFirstname.requestFocus();
-                }
-
-
-
-
-                else if ( lname.contains(" "))
-                {/*showerror ( editTextLastname, "Please Enter LastName" );*/
+                    editTextFirstname.requestFocus ( );
+                } else if ( lname.contains ( " " ) ) {/*showerror ( editTextLastname, "Please Enter LastName" );*/
                     Toast.makeText ( MainActivity.this, "No Spaces Allowed", Toast.LENGTH_LONG ).show ( );
-                    editTextLastname.requestFocus();
+                    editTextLastname.requestFocus ( );
 
-                }
+                } else if ( TextUtils.isEmpty ( lname ) ) {/*showerror ( editTextLastname, "Please Enter LastName" );*/
+                    Toast.makeText ( MainActivity.this, "Please Enter LastName", Toast.LENGTH_LONG ).show ( );
+                    editTextLastname.requestFocus ( );
 
-                else if ( TextUtils.isEmpty ( lname ) )
-                {/*showerror ( editTextLastname, "Please Enter LastName" );*/
-                      Toast.makeText ( MainActivity.this, "Please Enter LastName", Toast.LENGTH_LONG ).show ( );
-                    editTextLastname.requestFocus();
-
-                }
-             else if ( mname.contains(" "))
-            {
-                /*showerror ( editTextMiddlename, "Please Enter MiddleName" );*/
-                Toast.makeText ( MainActivity.this, "No Spaces Allowed", Toast.LENGTH_LONG ).show ( );
-                editTextMiddlename.requestFocus();
-            }
-
-                else if ( TextUtils.isEmpty ( mname ))
-                {
+                } else if ( mname.contains ( " " ) ) {
+                    /*showerror ( editTextMiddlename, "Please Enter MiddleName" );*/
+                    Toast.makeText ( MainActivity.this, "No Spaces Allowed", Toast.LENGTH_LONG ).show ( );
+                    editTextMiddlename.requestFocus ( );
+                } else if ( TextUtils.isEmpty ( mname ) ) {
                     /*showerror ( editTextMiddlename, "Please Enter MiddleName" );*/
                     Toast.makeText ( MainActivity.this, "Please Enter MiddleName", Toast.LENGTH_LONG ).show ( );
-                    editTextMiddlename.requestFocus();
-                }
-
-         else if (!isValidEmail(email))
-                 {
-                     Toast.makeText ( MainActivity.this, " Please Enter Valid Email Address", Toast.LENGTH_SHORT ).show ( );
+                    editTextMiddlename.requestFocus ( );
+                } else if ( ! isValidEmail ( email ) ) {
+                    Toast.makeText ( MainActivity.this, " Please Enter Valid Email Address", Toast.LENGTH_SHORT ).show ( );
 
                 }
 
@@ -274,7 +240,7 @@ private RadioButton radioButton;
                     editTextEmail.requestFocus();
                 }
                */
-/* else if ( email.isEmpty ( ) || ! email.contains ( "@" ) )*//*
+                /* else if ( email.isEmpty ( ) || ! email.contains ( "@" ) )*//*
 
 
 
@@ -292,9 +258,9 @@ private RadioButton radioButton;
                         Toast.makeText ( MainActivity.this, "Invalid email address", Toast.LENGTH_LONG ).show ( );
                         //or
                         */
-/*  textView.setText ( "invalid email" );*//*
+                /*  textView.setText ( "invalid email" );*//*
 
-                       */
+                 */
 /*   else
                         {
                             Toast.makeText ( MainActivity.this, "email address register", Toast.LENGTH_LONG ).show ( );
@@ -304,29 +270,18 @@ private RadioButton radioButton;
 */
 
 
-
-                else if( MobileNumber.contains(" "))
-
-                {
+                else if ( MobileNumber.contains ( " " ) ) {
                     Toast.makeText ( MainActivity.this, " No Spaces Allowed", Toast.LENGTH_SHORT ).show ( );
                     // am_checked=0;
-                    editTextMobilenumber.requestFocus();
-                }
-
-                else if( TextUtils.isEmpty ( MobileNumber ))
-
-                {
+                    editTextMobilenumber.requestFocus ( );
+                } else if ( TextUtils.isEmpty ( MobileNumber ) ) {
                     Toast.makeText ( MainActivity.this, " Please Enter Moblie number", Toast.LENGTH_SHORT ).show ( );
-                    editTextMobilenumber.requestFocus();
+                    editTextMobilenumber.requestFocus ( );
                     // am_checked=0;
-                }
-
-
-                else if(MobileNumber.length()<10 || MobileNumber.length()>10 /*|| !number.matches(regexStr)==false */ )
-                {
+                } else if ( MobileNumber.length ( ) < 10 || MobileNumber.length ( ) > 10 /*|| !number.matches(regexStr)==false */ ) {
                     Toast.makeText ( MainActivity.this, "Moblie number must be 10 digit", Toast.LENGTH_SHORT ).show ( );
                     // am_checked=0;
-                    editTextMobilenumber.requestFocus();
+                    editTextMobilenumber.requestFocus ( );
                 }
 
 
@@ -338,20 +293,14 @@ private RadioButton radioButton;
                     editTextPassword.requestFocus();
                 }*/
                 /////////////////password
-                else if( TextUtils.isEmpty ( password ))
-
-                {
+                else if ( TextUtils.isEmpty ( password ) ) {
                     Toast.makeText ( MainActivity.this, " Please Enter Password", Toast.LENGTH_SHORT ).show ( );
                     // am_checked=0;
-                    editTextPassword.requestFocus();
-                }
-
-
-                else if(password.length()<8 /*||*/ /* MobileNumber.length()>10 *//*|| !number.matches(regexStr)==false */ )
-                {
+                    editTextPassword.requestFocus ( );
+                } else if ( password.length ( ) < 8 /*||*/ /* MobileNumber.length()>10 *//*|| !number.matches(regexStr)==false */ ) {
                     Toast.makeText ( MainActivity.this, "Please Enter minimum 8 Digits", Toast.LENGTH_SHORT ).show ( );
                     // am_checked=0;
-                    editTextPassword.requestFocus();
+                    editTextPassword.requestFocus ( );
                 }
 
 
@@ -363,25 +312,18 @@ private RadioButton radioButton;
                     editTextConfirmPassword.requestFocus();
                 }*/
 
-                else if( TextUtils.isEmpty ( confirmPassword ))
-
-                {
+                else if ( TextUtils.isEmpty ( confirmPassword ) ) {
                     Toast.makeText ( MainActivity.this, " Please Enter confirmPassword", Toast.LENGTH_SHORT ).show ( );
                     // am_checked=0;
-                    editTextConfirmPassword.requestFocus();
-                }
-
-
-                else if(!confirmPassword.equals ( password ) /*||*/ /* MobileNumber.length()>10 *//*|| !number.matches(regexStr)==false */ )
-                {
+                    editTextConfirmPassword.requestFocus ( );
+                } else if ( ! confirmPassword.equals ( password ) /*||*/ /* MobileNumber.length()>10 *//*|| !number.matches(regexStr)==false */ ) {
                     Toast.makeText ( MainActivity.this, "your ConfirmPassword is not mathing", Toast.LENGTH_SHORT ).show ( );
                     // am_checked=0;
-                    editTextConfirmPassword.requestFocus();
-                }
-                else if ( TextUtils.isEmpty ( DateOfbirth )) {
+                    editTextConfirmPassword.requestFocus ( );
+                } else if ( TextUtils.isEmpty ( DateOfbirth ) ) {
                     Toast.makeText ( MainActivity.this, "Please Enter Date of Birth", Toast.LENGTH_SHORT ).show ( );
-                    editTextConfirmPassword.requestFocus();
-                   /* showerror ( editTextDateofbirth, "Please Enter Date of Birth" );*/
+                    editTextConfirmPassword.requestFocus ( );
+                    /* showerror ( editTextDateofbirth, "Please Enter Date of Birth" );*/
                     /*  Toast.makeText ( MainActivity.this, "ok", Toast.LENGTH_LONG ).show ( );*/
                 } else {
                     Toast.makeText ( MainActivity.this, "ok done", Toast.LENGTH_LONG ).show ( );
@@ -418,9 +360,9 @@ private RadioButton radioButton;
         }*/
 
 
-       public static boolean isValidEmail(CharSequence email) {
-           return (!TextUtils.isEmpty(email) && Patterns.EMAIL_ADDRESS.matcher(email).matches());
-       }
+    public static boolean isValidEmail(CharSequence email) {
+        return (! TextUtils.isEmpty ( email ) && Patterns.EMAIL_ADDRESS.matcher ( email ).matches ( ));
+    }
 
 
     private void showerror(EditText input, String s) {
