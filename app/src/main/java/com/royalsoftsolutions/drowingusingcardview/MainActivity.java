@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private TextInputEditText eText;
 private RadioButton radioButton;
     private Calendar calendar;
-    int month,date,year;
+    public int setDate = 2, setYear = 1997,setMonth = (3 - 1);
 
 
     @Override
@@ -80,9 +80,12 @@ private RadioButton radioButton;
                         new DatePickerDialog.OnDateSetListener() {
 
                             @Override
+
                             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
                             /*  if (dayOfMonth<10 || (monthOfYear + 1)<10  )*/
-
+                                setMonth = monthOfYear;
+                                setDate = dayOfMonth;
+                                setYear =  year;
 
                                 if(dayOfMonth<10 || (monthOfYear + 1)<10  )
                               {
@@ -115,7 +118,7 @@ private RadioButton radioButton;
                                   }
                             }
 
-                        }, year, month, day);
+                        }, setYear, setMonth, setDate);
 
                 datepicker.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                 datepicker.show();
