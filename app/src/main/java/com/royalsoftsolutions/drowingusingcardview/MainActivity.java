@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.provider.Settings;
 import android.text.InputType;
 import android.text.TextUtils;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
@@ -20,6 +21,7 @@ import android.widget.RadioButton;
 import android.widget.Toast;
 
 import org.jetbrains.annotations.Nullable;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -33,7 +35,7 @@ import forApi.VolleyResponseListener;
 
 
 public class MainActivity extends AppCompatActivity {
-
+    //declaration
     private EditText editTextFirstname, editTextLastname, editTextMiddlename, editTextMobilenumber, editTextEmail, editTextPassword, editTextConfirmPassword, editTextDateofbirth;
     private RadioButton radioButtonMale, radioButtonFemale;
     private DatePickerDialog datepicker;
@@ -48,11 +50,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate ( savedInstanceState );
         setContentView ( R.layout.activity_main );
 
-        // initialization
-        dialog = new ProgressDialog(this);
+
+        dialog = new ProgressDialog ( this );
         dialog.setMessage ( "Please wait..." );
         dialog.setCanceledOnTouchOutside ( false );
-
+        // initialization
         editTextFirstname = findViewById ( R.id.editTextfirstname );
         editTextMiddlename = findViewById ( R.id.editTextmiddlename );
         editTextLastname = findViewById ( R.id.editTextlastname );
@@ -94,6 +96,7 @@ public class MainActivity extends AppCompatActivity {
                                 setMonth = "0" + setMonth;
                             }
                             editTextDateofbirth.setText ( setDate + "/" + setMonth + "/" + setYear );
+
                         }
 
                     }, Integer.parseInt ( setYear ), Integer.parseInt ( setMonth ) - 1, Integer.parseInt ( setDate ) );
@@ -119,47 +122,72 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    private void changePassword(final String firstName, final String middleName, final String lastName,
-                                final String email,
-                                final String mobileNumber, final String password,
-                                final String dob,
-                                final String gender, final String profileImageName,
-                                final String attachmentBase64Str)
+    private void Login(String firstName,
+                       String middleName, String lastName,
+                       String email,
+                       String mobileNumber, String password,
+                       String dob,
+                       String gender,
+                       String profileImageName,
+                       String attachmentBase64Str)
     {
-        dialog.show();
+        dialog.show ( );
 
-        Map<String, String> params = new HashMap ();
-        params.put("ACTION_CALL_FUNCTION", "registration");
-        params.put("firstName",  firstName);
+        Map<String, String> params = new HashMap ( );
+        params.put ( "ACTION_CALL_FUNCTION", "registration" );
+        params.put ( "firstName", firstName );
+        params.put ( "middleName", middleName );
+        params.put ( "lastName", lastName );
+        params.put ( "email", email );
+        params.put ( "mobileNumber", mobileNumber );
+        params.put ( "password", password );
+        params.put ( "dob", dob );
+        params.put ( "gender", gender );
+        params.put ( "profileImageName", profileImageName );
+        params.put ( "attachment", attachmentBase64Str );
 
-        params.put("middleName", middleName);
-        params.put("lastName",   lastName);
-        params.put("email",email);
-        params.put("mobile", mobileNumber);
-        params.put("password", password);
-        params.put("dob", dob);
-        params.put("gender", gender);
-        params.put("profileImageName", profileImageName);
-        params.put("attachment", attachmentBase64Str);
+        Log.d ("Params=","ACTION_CALL_FUNCTION : registration");
+        Log.d ("Params=","firstName : "+firstName);
+        Log.d ("Params=","middleName : "+middleName);
+        Log.d ("Params=","lastName : "+lastName);
+        Log.d ("Params=","mobileNumber : "+mobileNumber);
+        Log.d ("Params=","password : "+password);
+        Log.d ("Params=","dob : "+dob);
+        Log.d ("Params=","gender : "+gender);
+        Log.d ("Params=","profileImageName : "+profileImageName);
+        Log.d ("Params=","attachmentBase64Str : "+attachmentBase64Str);
+
 
       /*  params.put("deviceid", deviceid);
         params.put("umid", AppUser.umid);
         params.put("password", Base64.encodeToString(new_pass.getBytes(), Base64.DEFAULT));
         params.put("current_password", Base64.encodeToString(current_pass.getBytes(), Base64.DEFAULT));*/
 
-        new StringRequestVolley (MainActivity.this, params,
-                new VolleyResponseListener () {
-
-                    @Override
-                    public void onError(@Nullable String errorMessage) {
-
-                    }
+        new StringRequestVolley ( MainActivity.this, params,
+                new VolleyResponseListener ( ) {
 
                     @Override
                     public void onResponse(@Nullable String response) {
 
+
+                        //if(responseCode is 0) show success
+                        //if(responseCode is 1) show error
+                        dialog.dismiss ( );
+                        Toast.makeText ( MainActivity.this,
+                                "Success..",
+                                Toast.LENGTH_LONG ).show ( );
                     }
-                });
+
+                    @Override
+                    public void onError(@Nullable String errorMessage) {
+                        //show error
+                        dialog.dismiss ( );
+                        Toast.makeText ( MainActivity.this,
+                                "Error..",
+                                Toast.LENGTH_LONG ).show ( );
+                    }
+
+                } );
     }
 
 
@@ -170,7 +198,6 @@ public class MainActivity extends AppCompatActivity {
 
 
                 String Fname = editTextFirstname.getText ( ).toString ( ).trim ( );
-
 
 
                 String Lname = editTextLastname.getText ( ).toString ( ).trim ( );
@@ -221,8 +248,7 @@ public class MainActivity extends AppCompatActivity {
 
                 } else if ( ! isValidEmail ( email ) ) {
                     Toast.makeText ( MainActivity.this, " Please Enter Valid Email Address", Toast.LENGTH_SHORT ).show ( );
-                }
-                else if ( MobileNumber.contains ( " " ) ) {
+                } else if ( MobileNumber.contains ( " " ) ) {
                     Toast.makeText ( MainActivity.this, " No Spaces Allowed", Toast.LENGTH_SHORT ).show ( );
                     editTextMobilenumber.requestFocus ( );
 
@@ -230,23 +256,21 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText ( MainActivity.this, " Please Enter Moblie number", Toast.LENGTH_SHORT ).show ( );
                     editTextMobilenumber.requestFocus ( );
 
-                } else if ( MobileNumber.length ( ) < 10) {
+                } else if ( MobileNumber.length ( ) < 10 ) {
                     Toast.makeText ( MainActivity.this, "Moblie number must be 10 digit", Toast.LENGTH_SHORT ).show ( );
                     editTextMobilenumber.requestFocus ( );
-                }
-                else if ( TextUtils.isEmpty ( password ) ) {
+                } else if ( TextUtils.isEmpty ( password ) ) {
                     Toast.makeText ( MainActivity.this, " Please Enter Password", Toast.LENGTH_SHORT ).show ( );
                     editTextPassword.requestFocus ( );
 
                 } else if ( password.length ( ) < 8 ) {
                     Toast.makeText ( MainActivity.this, "Please Enter minimum 8 Digits", Toast.LENGTH_SHORT ).show ( );
                     editTextPassword.requestFocus ( );
-                }
-                else if ( TextUtils.isEmpty ( confirmPassword ) ) {
+                } else if ( TextUtils.isEmpty ( confirmPassword ) ) {
                     Toast.makeText ( MainActivity.this, " Please Enter confirmPassword", Toast.LENGTH_SHORT ).show ( );
                     editTextConfirmPassword.requestFocus ( );
 
-                } else if ( ! confirmPassword.equals ( password )  ) {
+                } else if ( ! confirmPassword.equals ( password ) ) {
                     Toast.makeText ( MainActivity.this, "your ConfirmPassword is not mathing", Toast.LENGTH_SHORT ).show ( );
                     editTextConfirmPassword.requestFocus ( );
 
@@ -256,6 +280,13 @@ public class MainActivity extends AppCompatActivity {
 
                 } else {
                     Toast.makeText ( MainActivity.this, "ok done", Toast.LENGTH_LONG ).show ( );
+                    String gender = "male";
+                    String profileImage = "image1";
+                    String attachment = "not";
+                    String DOB = setYear + "/" + setMonth + "/" + setDate;
+                    Login ( fname, mname, lname, email, mobileNumber
+                            , password, DOB, gender,
+                            profileImage, attachment );
                 }
             }
         } );

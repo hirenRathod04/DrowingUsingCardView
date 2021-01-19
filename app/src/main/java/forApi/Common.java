@@ -3,6 +3,7 @@ package forApi;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.util.Log;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.NetworkError;
@@ -11,6 +12,8 @@ import com.android.volley.ParseError;
 import com.android.volley.ServerError;
 import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
+
+import java.util.HashMap;
 
 public class Common {
     public static String getVolleyErrorMessage(VolleyError volleyError) {
