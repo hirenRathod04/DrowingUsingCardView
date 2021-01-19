@@ -31,7 +31,7 @@ import java.util.Map;
 
 import forApi.Common;
 import forApi.StringRequestVolley;
-import forApi.VolleyResponseListener;
+import forApi.VolleyResponseListener;import org.json.*;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -169,7 +169,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(@Nullable String response) {
 
-
+                               /* gotoConvert();*/
                         //if(responseCode is 0) show success
                         //if(responseCode is 1) show error
                         dialog.dismiss ( );
@@ -287,6 +287,9 @@ public class MainActivity extends AppCompatActivity {
                     Login ( fname, mname, lname, email, mobileNumber
                             , password, DOB, gender,
                             profileImage, attachment );
+
+
+                   /* gotoConvert();*/
                 }
             }
         } );
@@ -294,6 +297,20 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+
+private void   gotoConvert() throws JSONException {
+ /*   response*/
+    Map string = null;
+    JSONObject response = new JSONObject(string);
+    System.out.println(response.toString());
+    String responseCode = response.getString("responseCode");
+    //String "responseCode" = response.getString("responseCode");
+  /*  System.out.println(technology);*/
+
+    Toast.makeText ( MainActivity.this,responseCode,
+            Toast.LENGTH_SHORT ).show ();
+
+}
     public static boolean isValidEmail(CharSequence email) {
         return (! TextUtils.isEmpty ( email ) && Patterns.EMAIL_ADDRESS.matcher ( email ).matches ( ));
     }

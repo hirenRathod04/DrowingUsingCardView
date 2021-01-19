@@ -20,7 +20,8 @@ class StringRequestVolley(
         private val context: Context,
         private val paramsMap: Map<String, String>,
         private val volleyResponseListener: VolleyResponseListener
-) {
+)
+{
 
     private val requestQueue: RequestQueue
 
