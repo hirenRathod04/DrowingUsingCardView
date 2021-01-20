@@ -44,13 +44,17 @@ public class MainActivity extends AppCompatActivity {
     private CheckBox checkBoxCondition;
     private Button buttonCreateaccount;
     private Calendar calendar;
-    private String setDate = "2", setYear = "3", setMonth = "1997";
+    private String setDate = "30", setYear = "1997", setMonth =
+            "12";
     private ProgressDialog dialog; //declaration
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate ( savedInstanceState );
         setContentView ( R.layout.activity_main );
+        Toast.makeText ( MainActivity.this,
+                setYear + "-" + setMonth + "-" + setDate,
+                Toast.LENGTH_LONG ).show ();
 
 
         dialog = new ProgressDialog ( this );
@@ -71,6 +75,7 @@ public class MainActivity extends AppCompatActivity {
         radioButtonFemale = findViewById ( R.id.radioButtonfemale );
 
         editTextDateofbirth.setInputType ( InputType.TYPE_NULL );
+
 
         editTextDateofbirth.setOnClickListener ( v -> {
 
@@ -140,7 +145,7 @@ public class MainActivity extends AppCompatActivity {
         params.put ( "middleName", middleName );
         params.put ( "lastName", lastName );
         params.put ( "email", email );
-        params.put ( "mobileNumber", mobileNumber );
+        params.put ( "mobile", mobileNumber );
         params.put ( "password", password );
         params.put ( "dob", dob );
         params.put ( "gender", gender );
@@ -168,9 +173,13 @@ public class MainActivity extends AppCompatActivity {
                         try {
                             JSONObject json = new JSONObject ( response );
                             String responseCode = json.getString ( "responseCode" );
+                            String message = json.getString ( "message" );
                             Log.d ( "Hiren=", "ResponseCode ="+responseCode);
+                            Log.d ( "Hiren1=", "message " +
+                                    "="+message);
+
                             Toast.makeText ( MainActivity.this,
-                                    "Hiren=.."+responseCode,
+                                     message ,
                                     Toast.LENGTH_LONG ).show ( );
 
 
@@ -234,6 +243,7 @@ public class MainActivity extends AppCompatActivity {
                 String DateOfbirth = editTextDateofbirth.getText ( ).toString ( ).trim ( );
                 editTextDateofbirth.setInputType ( InputType.TYPE_NULL );
 
+
                 if ( fname.contains ( " " ) ) {
                     Toast.makeText ( MainActivity.this, "No Spaces Allowed in First Name", Toast.LENGTH_LONG ).show ( );
                     editTextFirstname.requestFocus ( );
@@ -293,9 +303,12 @@ public class MainActivity extends AppCompatActivity {
                 } else {
                     /*  Toast.makeText ( MainActivity.this, "ok done", Toast.LENGTH_LONG ).show ( );*/
                     String gender = "male";
-                    String profileImage = "image1";
-                    String attachment = "not";
-                    String DOB = setYear + "/" + setMonth + "/" + setDate;
+                    String profileImage = "";
+                    String attachment = "";
+                    String DOB = setYear+"-"+setMonth+"-"+setDate;
+                    Toast.makeText ( MainActivity.this,
+                            setYear + "-" + setMonth + "-" + setDate,
+                            Toast.LENGTH_LONG ).show ();
                     Login ( fname, mname, lname, email, mobileNumber
                             , password, DOB, gender,
                             profileImage, attachment );
