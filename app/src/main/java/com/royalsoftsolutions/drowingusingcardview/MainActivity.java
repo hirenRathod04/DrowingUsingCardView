@@ -31,7 +31,9 @@ import java.util.Map;
 
 import forApi.Common;
 import forApi.StringRequestVolley;
-import forApi.VolleyResponseListener;import org.json.*;
+import forApi.VolleyResponseListener;
+
+import org.json.*;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -129,8 +131,7 @@ public class MainActivity extends AppCompatActivity {
                        String dob,
                        String gender,
                        String profileImageName,
-                       String attachmentBase64Str)
-    {
+                       String attachmentBase64Str) {
         dialog.show ( );
 
         Map<String, String> params = new HashMap ( );
@@ -146,22 +147,16 @@ public class MainActivity extends AppCompatActivity {
         params.put ( "profileImageName", profileImageName );
         params.put ( "attachment", attachmentBase64Str );
 
-        Log.d ("Params=","ACTION_CALL_FUNCTION : registration");
-        Log.d ("Params=","firstName : "+firstName);
-        Log.d ("Params=","middleName : "+middleName);
-        Log.d ("Params=","lastName : "+lastName);
-        Log.d ("Params=","mobileNumber : "+mobileNumber);
-        Log.d ("Params=","password : "+password);
-        Log.d ("Params=","dob : "+dob);
-        Log.d ("Params=","gender : "+gender);
-        Log.d ("Params=","profileImageName : "+profileImageName);
-        Log.d ("Params=","attachmentBase64Str : "+attachmentBase64Str);
-
-
-      /*  params.put("deviceid", deviceid);
-        params.put("umid", AppUser.umid);
-        params.put("password", Base64.encodeToString(new_pass.getBytes(), Base64.DEFAULT));
-        params.put("current_password", Base64.encodeToString(current_pass.getBytes(), Base64.DEFAULT));*/
+        Log.d ( "Params=", "ACTION_CALL_FUNCTION : registration" );
+        Log.d ( "Params=", "firstName : " + firstName );
+        Log.d ( "Params=", "middleName : " + middleName );
+        Log.d ( "Params=", "lastName : " + lastName );
+        Log.d ( "Params=", "mobileNumber : " + mobileNumber );
+        Log.d ( "Params=", "password : " + password );
+        Log.d ( "Params=", "dob : " + dob );
+        Log.d ( "Params=", "gender : " + gender );
+        Log.d ( "Params=", "profileImageName : " + profileImageName );
+        Log.d ( "Params=", "attachmentBase64Str : " + attachmentBase64Str );
 
         new StringRequestVolley ( MainActivity.this, params,
                 new VolleyResponseListener ( ) {
@@ -169,13 +164,30 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(@Nullable String response) {
 
-                               /* gotoConvert();*/
+
+                        try {
+                            JSONObject json = new JSONObject ( response );
+                            String responseCode = json.getString ( "responseCode" );
+                            Log.d ( "Hiren=", "ResponseCode ="+responseCode);
+                            Toast.makeText ( MainActivity.this,
+                                    "Hiren=.."+responseCode,
+                                    Toast.LENGTH_LONG ).show ( );
+
+
+                        } catch (JSONException e) {
+                            e.printStackTrace ( );
+                        }
+
+
+
+
+                        /* gotoConvert();*/
                         //if(responseCode is 0) show success
                         //if(responseCode is 1) show error
                         dialog.dismiss ( );
-                        Toast.makeText ( MainActivity.this,
+                      /*  Toast.makeText ( MainActivity.this,
                                 "Success..",
-                                Toast.LENGTH_LONG ).show ( );
+                                Toast.LENGTH_LONG ).show ( );*/
                     }
 
                     @Override
@@ -279,7 +291,7 @@ public class MainActivity extends AppCompatActivity {
                     editTextConfirmPassword.requestFocus ( );
 
                 } else {
-                    Toast.makeText ( MainActivity.this, "ok done", Toast.LENGTH_LONG ).show ( );
+                    /*  Toast.makeText ( MainActivity.this, "ok done", Toast.LENGTH_LONG ).show ( );*/
                     String gender = "male";
                     String profileImage = "image1";
                     String attachment = "not";
@@ -289,7 +301,31 @@ public class MainActivity extends AppCompatActivity {
                             profileImage, attachment );
 
 
-                   /* gotoConvert();*/
+
+                   /* try {
+
+
+                        JSONObject jsonObject = new JSONObject ( "responseCode" );
+                        String jsonObjectstring =
+                                jsonObject.getString("responseCode");
+                        if ( jsonObjectstring.equals ( "0" ) ) {
+                            Toast.makeText ( MainActivity.this
+                                    , "yes",
+                                    Toast.LENGTH_LONG );
+                        }
+                        else
+                        {
+                            Toast.makeText ( MainActivity.this
+                                    ,"no",
+                                    Toast.LENGTH_LONG );
+                        }
+
+                    } catch (Exception e)
+                    {
+                        e.printStackTrace ( );
+                    }*/
+
+
                 }
             }
         } );
@@ -298,19 +334,31 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-private void   gotoConvert() throws JSONException {
- /*   response*/
-    Map string = null;
-    JSONObject response = new JSONObject(string);
-    System.out.println(response.toString());
-    String responseCode = response.getString("responseCode");
-    //String "responseCode" = response.getString("responseCode");
-  /*  System.out.println(technology);*/
+    private void gotoConvert(String response) {
+        /*   response*/
 
-    Toast.makeText ( MainActivity.this,responseCode,
-            Toast.LENGTH_SHORT ).show ();
+        //String "responseCode" = response.getString("responseCode");
+        /*  System.out.println(technology);*/
 
-}
+  /*  Toast.makeText ( MainActivity.this,responseCode,
+            Toast.LENGTH_SHORT ).show ();*/
+        try {
+            JSONObject jsonObject = new JSONObject ( "responseCode" );
+            String jsonObjectstring = jsonObject.getString ( "message" );
+            if ( jsonObjectstring.equals ( "0" ) ) {
+                Toast.makeText ( MainActivity.this, jsonObjectstring,
+                        Toast.LENGTH_LONG );
+            } else {
+                Toast.makeText ( MainActivity.this, jsonObjectstring,
+                        Toast.LENGTH_LONG );
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace ( );
+        }
+
+    }
+
     public static boolean isValidEmail(CharSequence email) {
         return (! TextUtils.isEmpty ( email ) && Patterns.EMAIL_ADDRESS.matcher ( email ).matches ( ));
     }
