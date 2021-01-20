@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -18,6 +19,7 @@ import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import org.jetbrains.annotations.Nullable;
@@ -47,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
     private String setDate = "30", setYear = "1997", setMonth =
             "12";
     private ProgressDialog dialog; //declaration
+    private TextView textViewLogin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,8 +76,18 @@ public class MainActivity extends AppCompatActivity {
         buttonCreateaccount = findViewById ( R.id.buttoncreateaccount );
         radioButtonMale = findViewById ( R.id.radioButtonmale );
         radioButtonFemale = findViewById ( R.id.radioButtonfemale );
+        textViewLogin = findViewById ( R.id.Login );
+
 
         editTextDateofbirth.setInputType ( InputType.TYPE_NULL );
+        textViewLogin.setOnClickListener ( new View.OnClickListener ( ) {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), LoginActivity.class);
+                startActivity(i);
+                setContentView(R.layout.activity_login);
+            }
+        } );
 
 
         editTextDateofbirth.setOnClickListener ( v -> {
@@ -347,30 +360,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    private void gotoConvert(String response) {
-        /*   response*/
 
-        //String "responseCode" = response.getString("responseCode");
-        /*  System.out.println(technology);*/
-
-  /*  Toast.makeText ( MainActivity.this,responseCode,
-            Toast.LENGTH_SHORT ).show ();*/
-        try {
-            JSONObject jsonObject = new JSONObject ( "responseCode" );
-            String jsonObjectstring = jsonObject.getString ( "message" );
-            if ( jsonObjectstring.equals ( "0" ) ) {
-                Toast.makeText ( MainActivity.this, jsonObjectstring,
-                        Toast.LENGTH_LONG );
-            } else {
-                Toast.makeText ( MainActivity.this, jsonObjectstring,
-                        Toast.LENGTH_LONG );
-            }
-
-        } catch (Exception e) {
-            e.printStackTrace ( );
-        }
-
-    }
 
     public static boolean isValidEmail(CharSequence email) {
         return (! TextUtils.isEmpty ( email ) && Patterns.EMAIL_ADDRESS.matcher ( email ).matches ( ));
