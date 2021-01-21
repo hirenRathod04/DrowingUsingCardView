@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Dialog;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -42,6 +43,7 @@ public class LoginActivity extends AppCompatActivity
         editText_Password = findViewById ( R.id.login_Password );
         button_Login = findViewById ( R.id.button_login );
 
+      //  sessionManager = getSharedPreferences("MyPREFERENCES", Context.MODE_PRIVATE);
 
         button_Login.setOnClickListener ( new View.OnClickListener ( ) {
             @Override
@@ -203,7 +205,7 @@ public class LoginActivity extends AppCompatActivity
                                     objUser.setProfileImageUrl (profileImageUrl);
 
 
-                                    sessionManager = getSharedPreferences("MySharedPref",MODE_PRIVATE);
+                                    sessionManager = getSharedPreferences("MyPREFERENCES", Context.MODE_PRIVATE);
                                     SharedPreferences.Editor mydata = sessionManager.edit();
                                     mydata.putString("userId", userId);
                                     mydata.putString("firstName", firstName);
