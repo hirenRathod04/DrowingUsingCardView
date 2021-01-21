@@ -11,7 +11,10 @@ public class User {
     String dob;
     String gender;
     String profileImageName;
-    String profileImageUrl  ;
+    String profileImageUrl;
+
+    public User() {
+    }
 
     public String getUserId() {
         return userId;
@@ -92,10 +95,4 @@ public class User {
     public void setProfileImageUrl(String profileImageUrl) {
         this.profileImageUrl = profileImageUrl;
     }
-
-
-
-
-
-
 }

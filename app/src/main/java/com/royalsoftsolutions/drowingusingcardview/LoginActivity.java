@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Dialog;
 import android.app.ProgressDialog;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -29,6 +30,7 @@ public class LoginActivity extends AppCompatActivity
     private EditText editText_email_or_mobile, editText_Password;
     private Button button_Login;
     private ProgressDialog dialog2; //declaration
+    private   SharedPreferences sessionManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +41,7 @@ public class LoginActivity extends AppCompatActivity
         editText_email_or_mobile = findViewById ( R.id.login_email );
         editText_Password = findViewById ( R.id.login_Password );
         button_Login = findViewById ( R.id.button_login );
+
 
         button_Login.setOnClickListener ( new View.OnClickListener ( ) {
             @Override
@@ -175,29 +178,70 @@ public class LoginActivity extends AppCompatActivity
                                 {
                                     JSONObject json_login_details = json_User_Detail.getJSONObject(0);
 
-                                    User objUser = new User ();
-                                    objUser.setUserId ( json_login_details.getString( "userId") );
-                                    objUser.setFirstName ( json_login_details.getString( "firstName") );
-                                    objUser.setFirstName ( json_login_details.getString( "middleName") );
-                                    objUser.setUserId ( json_login_details.getString( "lastName") );
-                                    objUser.setFirstName ( json_login_details.getString( "email") );
-                                    objUser.setFirstName ( json_login_details.getString( "mobile") );
-                                    objUser.setUserId ( json_login_details.getString( "dob") );
-                                    objUser.setFirstName ( json_login_details.getString( "gender") );
-                                    objUser.setFirstName ( json_login_details.getString( "profileImageName") );
-                                    objUser.setFirstName ( json_login_details.getString( "profileImageUrl") );
 
+                                    String  userId = json_login_details.getString( "userId");
                                     String  firstName = json_login_details.getString( "firstName");
                                     String  middleName =json_login_details.getString( "middleName");
                                     String  lastName = json_login_details.getString( "lastName");
                                     String  email = json_login_details.getString( "email");
                                     String  mobile = json_login_details.getString( "mobile");
-
                                     String  dob = json_login_details.getString( "dob");
                                     String  gender = json_login_details.getString( "gender");
-
                                     String  profileImageName = json_login_details.getString( "profileImageName");
                                     String  profileImageUrl = json_login_details.getString( "profileImageUrl");
+
+                                    User objUser = new User();
+                                    objUser.setUserId( userId );
+                                    objUser.setFirstName ( firstName );
+                                    objUser.setMiddleName ( middleName);
+                                    objUser.setLastName (lastName);
+                                    objUser.setEmail (email);
+                                    objUser.setMobile (mobile);
+                                    objUser.setDob (dob);
+                                    objUser.setGender (gender);
+                                    objUser.setProfileImageName (profileImageName);
+                                    objUser.setProfileImageUrl (profileImageUrl);
+
+
+                                    sessionManager = getSharedPreferences("MySharedPref",MODE_PRIVATE);
+                                    SharedPreferences.Editor mydata = sessionManager.edit();
+                                    mydata.putString("userId", userId);
+                                    mydata.putString("firstName", firstName);
+                                    mydata.putString("middleName", middleName);
+
+                                    mydata.putString("lastName", lastName);
+                                    mydata.putString("email", email);
+                                    mydata.putString("mobile", mobile);
+
+                                    mydata.putString("dob", dob);
+                                    mydata.putString("gender", gender);
+                                    mydata.putString("profileImageName", profileImageName);
+                                    mydata.putString("profileImageUrl", profileImageUrl);
+
+                                    mydata.commit();
+                                    mydata.apply();
+
+                                    String s1userId = sessionManager.getString("userId", "");
+                                    String s1firstName = sessionManager.getString("firstName", "");
+                                    String s1middleName = sessionManager.getString("middleName", "");
+                                    String s1lastName = sessionManager.getString("lastName", "");
+                                    String s1email = sessionManager.getString("email", "");
+                                    String s1mobile = sessionManager.getString("mobile", "");
+                                    String s1dob = sessionManager.getString("dob", "");
+                                    String s1gender = sessionManager.getString("gender", "");
+                                    String s1profileImageName = sessionManager.getString("profileImageName", "");
+                                    String s1profileImageUrl = sessionManager.getString("profileImageUrl", "");
+
+
+
+                                    String hiren_mobile = objUser.getMobile();
+
+                                     Toast.makeText ( LoginActivity.this, s1middleName, Toast.LENGTH_SHORT ).show();
+
+
+
+
+
 
                                     Toast.makeText ( LoginActivity.this, email , Toast.LENGTH_LONG ).show ( );
 
