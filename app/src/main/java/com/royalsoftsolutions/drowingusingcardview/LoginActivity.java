@@ -174,14 +174,22 @@ public class LoginActivity extends AppCompatActivity
                                 if (json_User_Detail.length() > 0)
                                 {
                                     JSONObject json_login_details = json_User_Detail.getJSONObject(0);
-                                    String  userId = json_login_details.getString( "userId");
+
+                                    User objUser = new User ();
+                                    objUser.setUserId ( json_login_details.getString( "userId") );
+                                    objUser.setFirstName ( json_login_details.getString( "firstName") );
+                                    objUser.setFirstName ( json_login_details.getString( "middleName") );
+                                    objUser.setUserId ( json_login_details.getString( "lastName") );
+                                    objUser.setFirstName ( json_login_details.getString( "email") );
+                                    objUser.setFirstName ( json_login_details.getString( "mobile") );
+                                    objUser.setUserId ( json_login_details.getString( "dob") );
+                                    objUser.setFirstName ( json_login_details.getString( "gender") );
+                                    objUser.setFirstName ( json_login_details.getString( "profileImageName") );
+                                    objUser.setFirstName ( json_login_details.getString( "profileImageUrl") );
+
                                     String  firstName = json_login_details.getString( "firstName");
-
-
-
-                                    String  middleName = json_login_details.getString( "middleName");
+                                    String  middleName =json_login_details.getString( "middleName");
                                     String  lastName = json_login_details.getString( "lastName");
-
                                     String  email = json_login_details.getString( "email");
                                     String  mobile = json_login_details.getString( "mobile");
 
@@ -195,11 +203,12 @@ public class LoginActivity extends AppCompatActivity
 
 
                                     Log.d ( "Hiren=", "userId ="+userId);
-                                    Log.d ( "Hiren=", "firstName ="+firstName);
+                                    Log.d ( "Hiren=","firstName ="+firstName);
                                     Log.d ( "Hiren=", "middleName ="+middleName);
                                     Log.d ( "Hiren=", "lastName ="+lastName);
                                     Log.d ( "Hiren=", "email ="+email);
                                     Log.d ( "Hiren=", "mobile ="+mobile);
+                                    Log.d ( "Hiren=", "mobile ="+dob);
                                     Log.d ( "Hiren=", "gender ="+gender);
                                     Log.d ( "Hiren=", "profileImageName ="+profileImageName);
                                     Log.d ( "Hiren=", "profileImageUrl ="+profileImageUrl);
