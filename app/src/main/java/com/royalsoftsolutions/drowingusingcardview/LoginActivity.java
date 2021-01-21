@@ -30,7 +30,6 @@ public class LoginActivity extends AppCompatActivity
     private Button button_Login;
     private ProgressDialog dialog2; //declaration
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate ( savedInstanceState );
@@ -116,6 +115,7 @@ public class LoginActivity extends AppCompatActivity
                     @Override
                     public void onResponse(@Nullable String response) {
 
+                       /*   //IMPORTANT
 
                         try {
                             JSONObject json = new JSONObject ( response );
@@ -126,6 +126,11 @@ public class LoginActivity extends AppCompatActivity
                             Log.d ( "Hiren=", "ResponseCode ="+responseCode);
                             Log.d ( "Hiren1=", "message " + "="+message);
                             Log.d ( "Hiren1=", "result " + "="+result);
+
+
+                            //String getting_data =json.getstring("responseCode");
+                            //String Todays= json.getstring("Todays");
+
 
 
 
@@ -147,12 +152,79 @@ public class LoginActivity extends AppCompatActivity
                         } catch (JSONException e)
                         {
                             e.printStackTrace ( );
+                        }*/
+                        try {
+                            JSONObject responseDetails = new JSONObject ( response );
+
+                            String message = responseDetails.getString ( "message" );
+                            String responseCode = responseDetails.getString ( "responseCode" );
+                            Log.d ( "Hiren=", "ResponseCode ="+responseCode);
+                            Log.d ( "Hiren=", "message ="+message);
+                            Toast.makeText ( LoginActivity.this, message , Toast.LENGTH_LONG ).show ( );
+
+
+                            if (responseCode.equals ( "0" ) )
+                            {
+                               JSONObject result_object = responseDetails.getJSONObject("result");
+
+
+
+                              JSONArray json_User_Detail = result_object.getJSONArray("login");
+
+                                if (json_User_Detail.length() > 0)
+                                {
+                                    JSONObject json_login_details = json_User_Detail.getJSONObject(0);
+                                    String  userId = json_login_details.getString( "userId");
+                                    String  firstName = json_login_details.getString( "firstName");
+
+
+
+                                    String  middleName = json_login_details.getString( "middleName");
+                                    String  lastName = json_login_details.getString( "lastName");
+
+                                    String  email = json_login_details.getString( "email");
+                                    String  mobile = json_login_details.getString( "mobile");
+
+                                    String  dob = json_login_details.getString( "dob");
+                                    String  gender = json_login_details.getString( "gender");
+
+                                    String  profileImageName = json_login_details.getString( "profileImageName");
+                                    String  profileImageUrl = json_login_details.getString( "profileImageUrl");
+
+                                    Toast.makeText ( LoginActivity.this, email , Toast.LENGTH_LONG ).show ( );
+
+
+                                    Log.d ( "Hiren=", "userId ="+userId);
+                                    Log.d ( "Hiren=", "firstName ="+firstName);
+                                    Log.d ( "Hiren=", "middleName ="+middleName);
+                                    Log.d ( "Hiren=", "lastName ="+lastName);
+                                    Log.d ( "Hiren=", "email ="+email);
+                                    Log.d ( "Hiren=", "mobile ="+mobile);
+                                    Log.d ( "Hiren=", "gender ="+gender);
+                                    Log.d ( "Hiren=", "profileImageName ="+profileImageName);
+                                    Log.d ( "Hiren=", "profileImageUrl ="+profileImageUrl);
+
+
+
+
+
+                                }
+
+
+
+
+
+                            }
+
+                        } catch (JSONException e) {
+                            e.printStackTrace ( );
                         }
 
 
 
 
-                        /* gotoConvert();*/
+
+                            /* gotoConvert();*/
                         //if(responseCode is 0) show success
                         //if(responseCode is 1) show error
 
