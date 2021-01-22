@@ -1,4 +1,4 @@
-package forApi
+package com.royalsoftsolutions.drowingusingcardview.forApi
 
 import android.content.Context
 import android.content.Intent
@@ -10,8 +10,8 @@ import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 
 import com.royalsoftsolutions.drowingusingcardview.UnderMaintainanceActivity
-import forApi.Common.getVolleyErrorMessage
-import forApi.Common.isConnected
+import com.royalsoftsolutions.drowingusingcardview.forApi.Common.getVolleyErrorMessage
+import com.royalsoftsolutions.drowingusingcardview.forApi.Common.isConnected
 import org.json.JSONException
 import org.json.JSONObject
 import java.util.*

@@ -1,4 +1,4 @@
-package forApi;
+package com.royalsoftsolutions.drowingusingcardview.forApi;
 
 public class Constant {
     public static String BASE_URL = "https://pathocarepatan.com/gsfinance/ws/gsfsjsonapi.php";

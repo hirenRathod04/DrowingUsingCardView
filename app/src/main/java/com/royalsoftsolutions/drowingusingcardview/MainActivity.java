@@ -8,7 +8,6 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.provider.Settings;
 import android.text.InputType;
 import android.text.TextUtils;
 import android.util.Log;
@@ -23,7 +22,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import org.jetbrains.annotations.Nullable;
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -31,11 +29,8 @@ import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
-import forApi.Common;
-import forApi.StringRequestVolley;
-import forApi.VolleyResponseListener;
-
-import org.json.*;
+import com.royalsoftsolutions.drowingusingcardview.forApi.StringRequestVolley;
+import com.royalsoftsolutions.drowingusingcardview.forApi.VolleyResponseListener;
 
 
 public class MainActivity extends AppCompatActivity {

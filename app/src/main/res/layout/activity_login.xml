@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
     android:background="@color/white1"
     tools:context=".LoginActivity">
 
@@ -14,6 +13,7 @@
         app:layout_constraintTop_toTopOf="parent"
         android:layout_width="match_parent"
         android:layout_height="280dp"/>
+
     <ImageView
         android:id="@+id/textviewBox"
         android:layout_marginTop="450dp"
@@ -24,11 +24,6 @@
         app:layout_constraintBottom_toBottomOf="@+id/imageViewBlue"
         android:layout_width="match_parent"
         android:layout_height="400dp"/>
-
-
-
-
-
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tvemail"
